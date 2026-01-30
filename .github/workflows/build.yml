@@ -46,7 +46,7 @@ jobs:
           chmod +x gradlew
           ./gradlew build --no-daemon
 
-      - name: publish owo-lib to Maven Local
+      - name: build owo-lib
         working-directory: owo-lib
         run: |
           chmod +x gradlew
