@@ -1,0 +1,35 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:item_model": "lipartefacts:enchanted_book_imperilment",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.enchanted_book_imperilment"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "enchantments": {
+                                "lipartefacts:imperilment": 1
+                            },
+                            "function": "minecraft:set_enchantments"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/uncommon"
+                        }
+                    ],
+                    "name": "minecraft:enchanted_book",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

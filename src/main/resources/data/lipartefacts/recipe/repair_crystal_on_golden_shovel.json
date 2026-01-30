@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:golden_shovel",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:golden_shovel",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}

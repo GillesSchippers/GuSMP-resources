@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:elytra",
+    "template": "minecraft:flow_banner_pattern",
+    "result": {
+        "id": "minecraft:elytra",
+        "components": {
+            "minecraft:enchantments": {
+                "lipartefacts:origin_mark": 1
+            },
+            "minecraft:repair_cost": 1
+        }
+    }
+}

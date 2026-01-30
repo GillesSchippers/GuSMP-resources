@@ -1,0 +1,47 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:equippable": {
+                                    "damage_on_hurt": false,
+                                    "slot": "offhand"
+                                },
+                                "minecraft:item_model": "lipartefacts:ravager_charm",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.ravager_charm"
+                                },
+                                "minecraft:max_stack_size": 1
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 1.0,
+                                    "attribute": "minecraft:attack_knockback",
+                                    "id": "minecraft:offhand.attack_knockback",
+                                    "operation": "add_value",
+                                    "slot": "offhand"
+                                }
+                            ],
+                            "replace": true
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/rare"
+                        }
+                    ],
+                    "name": "minecraft:echo_shard",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:iron_pickaxe",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:iron_pickaxe",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}

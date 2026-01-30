@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:chainmail_leggings",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:chainmail_leggings",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}

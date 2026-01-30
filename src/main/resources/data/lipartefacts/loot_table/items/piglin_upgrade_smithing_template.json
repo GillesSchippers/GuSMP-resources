@@ -1,0 +1,69 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:item_model": "lipartefacts:piglin_upgrade_smithing_template",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.piglin_upgrade_smithing_template"
+                                },
+                                "minecraft:lore": [
+                                    {
+                                        "color": "gray",
+                                        "italic": false,
+                                        "translate": "item.minecraft.smithing_template"
+                                    },
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "color": "gray",
+                                        "italic": false,
+                                        "translate": "item.minecraft.smithing_template.applies_to"
+                                    },
+                                    [
+                                        {
+                                            "text": " "
+                                        },
+                                        {
+                                            "color": "blue",
+                                            "italic": false,
+                                            "translate": "item.lipartefacts.smithing_template.piglin_upgrade.applies_to"
+                                        }
+                                    ],
+                                    {
+                                        "color": "gray",
+                                        "italic": false,
+                                        "translate": "item.minecraft.smithing_template.ingredients"
+                                    },
+                                    [
+                                        {
+                                            "text": " "
+                                        },
+                                        {
+                                            "color": "blue",
+                                            "italic": false,
+                                            "translate": "item.lipartefacts.smithing_template.piglin_upgrade.ingredients"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/rare"
+                        }
+                    ],
+                    "name": "minecraft:chain_command_block",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

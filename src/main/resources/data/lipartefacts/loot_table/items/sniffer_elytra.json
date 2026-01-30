@@ -1,0 +1,51 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:equippable": {
+                                    "asset_id": "lipartefacts:sniffer_elytra",
+                                    "equip_sound": "minecraft:item.armor.equip_elytra",
+                                    "slot": "chest"
+                                },
+                                "minecraft:item_model": "lipartefacts:sniffer_elytra",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.sniffer_elytra"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 0.2,
+                                    "attribute": "minecraft:knockback_resistance",
+                                    "id": "minecraft:armor.chestplate",
+                                    "operation": "add_value",
+                                    "slot": "chest"
+                                }
+                            ],
+                            "replace": true
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_durability/netherite/elytra"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/epic"
+                        }
+                    ],
+                    "name": "minecraft:elytra",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

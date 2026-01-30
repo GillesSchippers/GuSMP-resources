@@ -1,0 +1,56 @@
+{
+    "addition": "minecraft:echo_shard",
+    "base": "minecraft:diamond_boots",
+    "result": {
+        "components": {
+            "minecraft:attribute_modifiers": [
+                {
+                    "amount": 3,
+                    "id": "minecraft:armor.boots",
+                    "operation": "add_value",
+                    "slot": "feet",
+                    "type": "minecraft:armor"
+                },
+                {
+                    "amount": 2,
+                    "id": "minecraft:armor.boots",
+                    "operation": "add_value",
+                    "slot": "feet",
+                    "type": "minecraft:armor_toughness"
+                },
+                {
+                    "amount": 2,
+                    "id": "minecraft:armor.boots",
+                    "operation": "add_value",
+                    "slot": "feet",
+                    "type": "minecraft:max_health"
+                }
+            ],
+            "minecraft:enchantable": {
+                "value": 15
+            },
+            "minecraft:equippable": {
+                "asset_id": "lipartefacts:warden",
+                "equip_sound": "minecraft:item.armor.equip_generic",
+                "slot": "feet"
+            },
+            "minecraft:item_model": "lipartefacts:warden_boots",
+            "minecraft:item_name": {
+                "italic": false,
+                "translate": "item.lipartefacts.warden_boots"
+            },
+            "minecraft:lore": [
+                {
+                    "color": "dark_aqua",
+                    "italic": false,
+                    "translate": "item.lipartefacts.generic.rare.desc"
+                }
+            ],
+            "minecraft:max_damage": 481,
+            "minecraft:rarity": "rare"
+        },
+        "id": "minecraft:chainmail_boots"
+    },
+    "template": "minecraft:command_block",
+    "type": "minecraft:smithing_transform"
+}

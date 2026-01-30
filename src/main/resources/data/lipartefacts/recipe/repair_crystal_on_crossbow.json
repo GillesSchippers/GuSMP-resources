@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:crossbow",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:crossbow",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}

@@ -1,0 +1,169 @@
+{
+    "parent": "lipartefacts:artefacts/root",
+    "criteria": {
+        "battle_shield": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:battle_shield"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "bogged_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:bogged_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "copper_golem_upgrade_smithing_template": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:copper_golem_upgrade_smithing_template"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "drilling_pickaxe": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:drilling_pickaxe"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "enchanted_book_double_shot": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:enchanted_book_double_shot"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "enchanted_book_fracture": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:enchanted_book_fracture"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "enchanted_book_vampirism": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:enchanted_book_vampirism"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "great_hunger_helmet": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:great_hunger_helmet"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "parched_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:parched_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "stray_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:stray_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "display": {
+        "description": {
+            "translate": "advancements.lipartefacts.artefacts.complete_trial_chambers.description"
+        },
+        "frame": "task",
+        "icon": {
+            "id": "minecraft:trial_spawner"
+        },
+        "title": {
+            "translate": "advancements.lipartefacts.artefacts.complete_trial_chambers.title"
+        }
+    },
+    "requirements": [
+        [
+            "battle_shield"
+        ],
+        [
+            "bogged_chestplate"
+        ],
+        [
+            "copper_golem_upgrade_smithing_template"
+        ],
+        [
+            "drilling_pickaxe"
+        ],
+        [
+            "enchanted_book_double_shot"
+        ],
+        [
+            "enchanted_book_fracture"
+        ],
+        [
+            "enchanted_book_vampirism"
+        ],
+        [
+            "great_hunger_helmet"
+        ],
+        [
+            "parched_chestplate"
+        ],
+        [
+            "stray_chestplate"
+        ]
+    ]
+}

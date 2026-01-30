@@ -1,0 +1,35 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:item_model": "lipartefacts:enchanted_book_double_shot",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.enchanted_book_double_shot"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "enchantments": {
+                                "lipartefacts:double_shot": 1
+                            },
+                            "function": "minecraft:set_enchantments"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/rare"
+                        }
+                    ],
+                    "name": "minecraft:enchanted_book",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

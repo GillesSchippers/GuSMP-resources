@@ -1,0 +1,69 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:equippable": {
+                                    "asset_id": "lipartefacts:sniffer",
+                                    "equip_sound": "minecraft:item.armor.equip_leather",
+                                    "slot": "legs"
+                                },
+                                "minecraft:item_model": "lipartefacts:sniffer_leggings",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.sniffer_leggings"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 6,
+                                    "attribute": "minecraft:armor",
+                                    "id": "minecraft:armor.leggings",
+                                    "operation": "add_value",
+                                    "slot": "legs"
+                                },
+                                {
+                                    "amount": 2,
+                                    "attribute": "minecraft:armor_toughness",
+                                    "id": "minecraft:armor.leggings",
+                                    "operation": "add_value",
+                                    "slot": "legs"
+                                },
+                                {
+                                    "amount": 0.2,
+                                    "attribute": "minecraft:knockback_resistance",
+                                    "id": "minecraft:armor.leggings",
+                                    "operation": "add_value",
+                                    "slot": "legs"
+                                }
+                            ],
+                            "replace": true
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_durability/netherite/leggings"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_enchantable/netherite_armor"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/rare"
+                        }
+                    ],
+                    "name": "minecraft:leather_leggings",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

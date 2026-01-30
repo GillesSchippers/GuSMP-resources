@@ -1,0 +1,69 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:equippable": {
+                                    "asset_id": "lipartefacts:goat",
+                                    "equip_sound": "minecraft:item.armor.equip_leather",
+                                    "slot": "head"
+                                },
+                                "minecraft:item_model": "lipartefacts:goat_helmet",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.goat_helmet"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 3,
+                                    "attribute": "minecraft:armor",
+                                    "id": "minecraft:armor.helmet",
+                                    "operation": "add_value",
+                                    "slot": "head"
+                                },
+                                {
+                                    "amount": 2,
+                                    "attribute": "minecraft:armor_toughness",
+                                    "id": "minecraft:armor.helmet",
+                                    "operation": "add_value",
+                                    "slot": "head"
+                                },
+                                {
+                                    "amount": 1.0,
+                                    "attribute": "minecraft:attack_knockback",
+                                    "id": "minecraft:armor.helmet",
+                                    "operation": "add_value",
+                                    "slot": "head"
+                                }
+                            ],
+                            "replace": true
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_durability/diamond/helmet"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_enchantable/diamond_armor"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/uncommon"
+                        }
+                    ],
+                    "name": "minecraft:leather_helmet",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

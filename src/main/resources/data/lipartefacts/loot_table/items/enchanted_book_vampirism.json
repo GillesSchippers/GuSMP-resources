@@ -1,0 +1,35 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:item_model": "lipartefacts:enchanted_book_vampirism",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.enchanted_book_vampirism"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "enchantments": {
+                                "lipartefacts:vampirism": 1
+                            },
+                            "function": "minecraft:set_enchantments"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/epic"
+                        }
+                    ],
+                    "name": "minecraft:enchanted_book",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

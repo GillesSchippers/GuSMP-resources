@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:netherite_sword",
+    "template": "minecraft:flow_banner_pattern",
+    "result": {
+        "id": "minecraft:netherite_sword",
+        "components": {
+            "minecraft:enchantments": {
+                "lipartefacts:origin_mark": 1
+            },
+            "minecraft:repair_cost": 1
+        }
+    }
+}

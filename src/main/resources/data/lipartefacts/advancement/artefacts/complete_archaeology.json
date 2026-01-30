@@ -1,0 +1,79 @@
+{
+    "parent": "lipartefacts:artefacts/complete_desert_pyramid",
+    "criteria": {
+        "great_hunger_helmet": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:great_hunger_helmet"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "mummy_leggings": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:mummy_leggings"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "parched_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:parched_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "sniffer_upgrade_smithing_template": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:sniffer_upgrade_smithing_template"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "display": {
+        "description": {
+            "translate": "advancements.lipartefacts.artefacts.complete_archaeology.description"
+        },
+        "frame": "task",
+        "icon": {
+            "id": "minecraft:suspicious_gravel"
+        },
+        "title": {
+            "translate": "advancements.lipartefacts.artefacts.complete_archaeology.title"
+        }
+    },
+    "requirements": [
+        [
+            "great_hunger_helmet"
+        ],
+        [
+            "mummy_leggings"
+        ],
+        [
+            "parched_chestplate"
+        ],
+        [
+            "sniffer_upgrade_smithing_template"
+        ]
+    ]
+}

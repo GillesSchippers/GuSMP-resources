@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:flint_and_steel",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:flint_and_steel",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}

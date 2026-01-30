@@ -1,0 +1,56 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:item_model": "lipartefacts:drilling_pickaxe",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.drilling_pickaxe"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 30.0,
+                                    "attribute": "minecraft:mining_efficiency",
+                                    "id": "minecraft:mainhand.mining_efficiency",
+                                    "operation": "add_value",
+                                    "slot": "mainhand"
+                                }
+                            ],
+                            "replace": false
+                        },
+                        {
+                            "enchantments": {
+                                "lipartefacts:cooling": 1
+                            },
+                            "function": "minecraft:set_enchantments"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_durability/stone/tool"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_enchantable/golden"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/rare"
+                        }
+                    ],
+                    "name": "minecraft:golden_pickaxe",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

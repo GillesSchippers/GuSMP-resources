@@ -1,0 +1,109 @@
+{
+    "parent": "lipartefacts:artefacts/root",
+    "criteria": {
+        "bogged_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:bogged_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "cat_helmet": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:cat_helmet"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "fisherman_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:fisherman_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "fisherman_helmet": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:fisherman_helmet"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "parched_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:parched_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "stray_chestplate": {
+            "conditions": {
+                "items": [
+                    {
+                        "components": {
+                            "minecraft:item_model": "lipartefacts:stray_chestplate"
+                        }
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "display": {
+        "description": {
+            "translate": "advancements.lipartefacts.artefacts.complete_fishing.description"
+        },
+        "frame": "task",
+        "icon": {
+            "id": "minecraft:barrel"
+        },
+        "title": {
+            "translate": "advancements.lipartefacts.artefacts.complete_fishing.title"
+        }
+    },
+    "requirements": [
+        [
+            "bogged_chestplate"
+        ],
+        [
+            "cat_helmet"
+        ],
+        [
+            "fisherman_chestplate"
+        ],
+        [
+            "fisherman_helmet"
+        ],
+        [
+            "parched_chestplate"
+        ],
+        [
+            "stray_chestplate"
+        ]
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "components": {
+                                "minecraft:equippable": {
+                                    "asset_id": "lipartefacts:netherite_elytra",
+                                    "equip_sound": "minecraft:item.armor.equip_elytra",
+                                    "slot": "chest"
+                                },
+                                "minecraft:item_model": "lipartefacts:netherite_elytra",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.netherite_elytra"
+                                }
+                            },
+                            "function": "minecraft:set_components"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "amount": 1,
+                                    "attribute": "minecraft:armor_toughness",
+                                    "id": "minecraft:armor.chestplate",
+                                    "operation": "add_value",
+                                    "slot": "chest"
+                                },
+                                {
+                                    "amount": 0.1,
+                                    "attribute": "minecraft:knockback_resistance",
+                                    "id": "minecraft:armor.chestplate",
+                                    "operation": "add_value",
+                                    "slot": "chest"
+                                }
+                            ],
+                            "replace": true
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:fire_resistant"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_durability/netherite/elytra"
+                        },
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/epic"
+                        }
+                    ],
+                    "name": "minecraft:elytra",
+                    "type": "minecraft:item"
+                }
+            ],
+            "rolls": 1
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:shield",
+                    "functions": [
+                        {
+                            "function": "minecraft:reference",
+                            "name": "lipartefacts:set_rarity/uncommon"
+                        },
+                        {
+                            "function": "minecraft:set_attributes",
+                            "modifiers": [
+                                {
+                                    "attribute": "minecraft:attack_damage",
+                                    "id": "minecraft:base_attack_damage",
+                                    "amount": 8,
+                                    "operation": "add_value",
+                                    "slot": "mainhand"
+                                },
+                                {
+                                    "attribute": "minecraft:attack_speed",
+                                    "id": "minecraft:base_attack_speed",
+                                    "amount": -3.1,
+                                    "operation": "add_value",
+                                    "slot": "mainhand"
+                                }
+                            ],
+                            "replace": false,
+                            "conditions": []
+                        },
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:base_color": "white",
+                                "minecraft:item_model": "lipartefacts:battle_shield",
+                                "minecraft:item_name": {
+                                    "italic": false,
+                                    "translate": "item.lipartefacts.battle_shield"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

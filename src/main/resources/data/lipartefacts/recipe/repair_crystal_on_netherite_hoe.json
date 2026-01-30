@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": "minecraft:netherite_hoe",
+    "template": "minecraft:guster_banner_pattern",
+    "result": {
+        "id": "minecraft:netherite_hoe",
+        "components": {
+            "minecraft:damage": 1
+        }
+    }
+}
