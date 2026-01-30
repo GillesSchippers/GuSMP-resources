@@ -2,7 +2,6 @@
   "replace": false,
   "order": 5,
   "slots": [
-    "totem",
     "elytra"
   ],
   "icon": "gustavdev:container/group/equipment"

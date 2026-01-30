@@ -278,7 +278,7 @@
 				}
 			}
 		],
-		"description": "+8 health, -75% sprinting speed, -25% attack speed, -50% healinh, +50% knockback, +50% meelee dmg, -75% ranged dmg",
+		"description": "+8 health, -75% sprinting speed, -25% attack speed, -50% healing, +50% knockback, +50% meelee dmg, -75% ranged dmg",
 		"metadata": {
 			"icon": "2xbegpqdhgjnwynz"
 		}
