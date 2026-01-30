@@ -1,0 +1,218 @@
+{
+  "+10coal": {
+    "title": "get 10 coal",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "coal"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s coal 10"
+        }
+      }
+    ],
+    "description": "Instantly get 10 coal \n required points: 3",
+    "size": 1,
+    "cost": 1,
+    "required_points": 3
+  },
+  "+20gold": {
+    "title": "get 20 gold ingots",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "gold_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s gold_ingot 20"
+        }
+      }
+    ],
+    "description": "Instantly get 20 gold ingots  \n cost: 2",
+    "cost": 2
+  },
+  "+12iron": {
+    "title": "get 12 iron ingots",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "iron_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s iron_ingot 12"
+        }
+      }
+    ],
+    "description": "Instantly get 12 iron ingots  \n cost: 2",
+    "size": 1,
+    "cost": 2
+  },
+  "+2.5%fortune": {
+    "title": "+2.5% fortune",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "amethyst_shard"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:fortune",
+          "value": 0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "Get +2.5% fortune when mining crops, ores, etc.",
+    "size": 1,
+    "cost": 1
+  },
+  "+2.5%mining": {
+    "title": "+2.5% mining speed",
+    "icon": {
+      "type": "effect",
+      "data": {
+        "effect": "haste"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:mining_speed",
+          "value": 0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "+2.5 mining speed with every tool and with your hands",
+    "size": 1,
+    "cost": 1
+  },
+  "+5%pickaxe": {
+    "title": "+5% pickaxe speed",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "iron_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:pickaxe_speed",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "+5% mining speed when using a pickaxe",
+    "size": 1,
+    "cost": 1
+  },
+  "+64copper": {
+    "title": "get 64 copper ingots",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "copper_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s copper_ingot 64"
+        }
+      }
+    ],
+    "description": "Instantly get 64 copper ingots  \n required points: 6  \n cost: 2",
+    "size": 1,
+    "cost": 2,
+    "required_points": 6
+  },
+  "5diamonds": {
+    "title": "get 5 diamonds",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "diamond"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s diamond 5"
+        }
+      }
+    ],
+    "description": "Instantly get 5 diamonds  \n required points: 5  \n cost: 2",
+    "size": 1,
+    "cost": 2,
+    "required_points": 5
+  }
+}

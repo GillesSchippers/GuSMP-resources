@@ -1,0 +1,188 @@
+{
+	"8a053338-5c50-4251-8602-948fd576fc76": {
+		"definition": "+5%shovel",
+		"x": 0,
+		"y": 0,
+		"root": true
+	},
+	"b926b9de-06ed-4535-af4d-a20c2d3c5cfe": {
+		"definition": "+5%shovel",
+		"x": 0,
+		"y": 73.9008344562721,
+		"root": false
+	},
+	"c20cde9e-c172-4859-b8cf-db736bf420c2": {
+		"definition": "+5%shovel",
+		"x": -64,
+		"y": -36.95041722813605,
+		"root": false
+	},
+	"b51e561f-aeb7-4783-bd8d-648c57b9d403": {
+		"definition": "+5%shovel",
+		"x": 64,
+		"y": -36.95041722813605,
+		"root": false
+	},
+	"9a461ae4-eff8-461f-a9ca-b50c16cb1bf6": {
+		"definition": "+5%shovel",
+		"x": 128,
+		"y": -73.9008344562721,
+		"root": false
+	},
+	"70063167-963a-4ec2-b719-b8ca6f1cfdb0": {
+		"definition": "+5%shovel",
+		"x": -128,
+		"y": -73.9008344562721,
+		"root": false
+	},
+	"c6d12061-ba96-40a2-af59-27be4c83375f": {
+		"definition": "+5%shovel",
+		"x": 0,
+		"y": 147.8016689125442,
+		"root": false
+	},
+	"aaa5e3f2-7403-4066-a5fa-c002c1d96b95": {
+		"definition": "+2.5%miningspeed",
+		"x": 128,
+		"y": 73.9008344562721,
+		"root": false
+	},
+	"617d9964-d47a-43d5-8b30-0d1f569d1243": {
+		"definition": "+5%stamina",
+		"x": -128,
+		"y": 73.9008344562721,
+		"root": false
+	},
+	"32218b44-03ab-4a3c-b69c-8156120bb808": {
+		"definition": "+5%shovel",
+		"x": 0,
+		"y": -147.8016689125442,
+		"root": false
+	},
+	"4d1aa8e6-629b-431d-aecc-c320398e0194": {
+		"definition": "+2.5%miningspeed",
+		"x": 128,
+		"y": 0,
+		"root": false
+	},
+	"40ad79fc-59db-4a36-89cb-f7713b8d0b47": {
+		"definition": "+2.5%miningspeed",
+		"x": 64,
+		"y": 110.85125168440814,
+		"root": false
+	},
+	"319b801c-b596-4cb4-9a3e-9ba330f71a13": {
+		"definition": "+5%shovel",
+		"x": 64,
+		"y": 36.95041722813605,
+		"root": false
+	},
+	"f1a22fdf-1e2d-48bd-a546-b24d6ac5c258": {
+		"definition": "+2.5%miningspeed",
+		"x": 64,
+		"y": -110.85125168440814,
+		"root": false
+	},
+	"055743a9-8fbf-4ef8-b898-c08487ff0b3a": {
+		"definition": "+5%stamina",
+		"x": -64,
+		"y": -110.85125168440814,
+		"root": false
+	},
+	"d0652670-84fe-42f3-82d9-39515e561060": {
+		"definition": "+5%stamina",
+		"x": -64,
+		"y": 110.85125168440814,
+		"root": false
+	},
+	"ae4ef933-8aa9-428e-a0e2-87da17dd2e34": {
+		"definition": "+5%stamina",
+		"x": -128,
+		"y": 0,
+		"root": false
+	},
+	"2037a937-c306-47ff-a6f8-26ae9d052f47": {
+		"definition": "+5%shovel",
+		"x": -64,
+		"y": 36.95041722813605,
+		"root": false
+	},
+	"6032a514-840c-4f68-a95c-90184e6aaaee": {
+		"definition": "+5%shovel",
+		"x": 0,
+		"y": -73.9008344562721,
+		"root": false
+	},
+	"925c3cd5-9597-424e-a39f-1bb205d00d61": {
+		"definition": "+2.5%miningspeed",
+		"x": 192,
+		"y": 36.95041722813605,
+		"root": false
+	},
+	"50901d6e-f283-4c29-8d53-b8b4e4f8499c": {
+		"definition": "+2.5%miningspeed",
+		"x": 128,
+		"y": 147.8016689125442,
+		"root": false
+	},
+	"0298b28f-7b9f-4713-983a-c9ea5fb2df06": {
+		"definition": "+5%stamina",
+		"x": -128,
+		"y": 147.8016689125442,
+		"root": false
+	},
+	"63951db8-6ee5-4636-93f2-bbdc43fba002": {
+		"definition": "+5%stamina",
+		"x": -192,
+		"y": 36.95041722813605,
+		"root": false
+	},
+	"2e53105f-c4bc-4636-8e07-98e9f401dc0c": {
+		"definition": "+2.5%miningspeed",
+		"x": 64,
+		"y": -184.75208614068023,
+		"root": false
+	},
+	"6b6e141a-d474-4e54-a34b-3a72be617ca8": {
+		"definition": "+5%stamina",
+		"x": -64,
+		"y": -184.75208614068023,
+		"root": false
+	},
+	"4a06ca58-844a-42be-9da3-97c05f0acbbc": {
+		"definition": "+5%shovel",
+		"x": 128,
+		"y": -147.8016689125442,
+		"root": false
+	},
+	"71d94a6d-502d-4212-9b85-a6761cf62a76": {
+		"definition": "+5%shovel",
+		"x": 192,
+		"y": -36.95041722813605,
+		"root": false
+	},
+	"afebd45f-921f-48f3-90f7-de66da0a34a3": {
+		"definition": "+5%shovel",
+		"x": 64,
+		"y": 184.75208614068023,
+		"root": false
+	},
+	"d5ced643-70d3-4a0b-8bd1-93f74d4731b8": {
+		"definition": "+5%shovel",
+		"x": -64,
+		"y": 184.75208614068023,
+		"root": false
+	},
+	"a17426ac-d4de-427d-bc78-3721a57c9e81": {
+		"definition": "+5%shovel",
+		"x": -192,
+		"y": -36.95041722813605,
+		"root": false
+	},
+	"39d6041d-8f74-430e-b241-09d81fc04691": {
+		"definition": "+5%shovel",
+		"x": -128,
+		"y": -147.8016689125442,
+		"root": false
+	}
+}

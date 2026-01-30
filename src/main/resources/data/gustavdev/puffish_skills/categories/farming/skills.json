@@ -1,0 +1,128 @@
+{
+	"45fc97b5-2cd1-47b8-9caa-3d94b4894f98": {
+		"definition": "+2.5%fortune",
+		"x": 0,
+		"y": 0,
+		"root": true
+	},
+	"c96c37fa-4697-46a2-a9f7-fd0cd39cdf96": {
+		"definition": "+2.5%sprint",
+		"x": -82,
+		"y": -47.34272207354931,
+		"root": false
+	},
+	"ce75ddb5-de89-46d6-a6df-33dfdcf96bf2": {
+		"definition": "+2.5%sprint",
+		"x": 82,
+		"y": -47.34272207354931,
+		"root": false
+	},
+	"5c9df221-2f48-4654-b46f-6b655c00d33a": {
+		"definition": "+2.5%fortune",
+		"x": -82,
+		"y": -142.0281662206478,
+		"root": false
+	},
+	"e465c5c2-f941-4a52-8742-75f74a8baebe": {
+		"definition": "+2.5%fortune",
+		"x": 82,
+		"y": -142.0281662206478,
+		"root": false
+	},
+	"6ea4e56f-2c5a-42cb-b6cb-a8448a8f5406": {
+		"definition": "+2.5%fortune",
+		"x": 164,
+		"y": -94.6854441470986,
+		"root": false
+	},
+	"5e438cb4-748e-4702-afad-f76acfcaf85d": {
+		"definition": "+2.5%fortune",
+		"x": 164,
+		"y": 0,
+		"root": false
+	},
+	"e09f901e-0d05-4555-928c-5377589108dc": {
+		"definition": "+2.5%fortune",
+		"x": -164,
+		"y": -94.6854441470986,
+		"root": false
+	},
+	"df8bf181-00f1-496b-b60f-c5d3952dcca0": {
+		"definition": "+2.5%fortune",
+		"x": -164,
+		"y": 0,
+		"root": false
+	},
+	"60ccd163-a104-4ecd-9205-3ba717d80e65": {
+		"definition": "+2.5%fortune",
+		"x": 0,
+		"y": -94.6854441470986,
+		"root": false
+	},
+	"134f1113-1e0c-4ee1-952f-b38582bfac2b": {
+		"definition": "+2.5%fortune",
+		"x": 0,
+		"y": -189.37088829419707,
+		"root": false
+	},
+	"656814f9-097f-4e60-9dab-aab892d4baa7": {
+		"definition": "+2.5%fortune",
+		"x": 164,
+		"y": 94.68544414709862,
+		"root": false
+	},
+	"1a5c29fd-bbf9-477e-acd8-9bcd2ffb8f91": {
+		"definition": "+2.5%fortune",
+		"x": -164,
+		"y": 94.68544414709862,
+		"root": false
+	},
+	"1fd2ba49-a3c9-4561-be5e-866ac098f699": {
+		"definition": "+2.5%fortune",
+		"x": 82,
+		"y": 47.34272207354931,
+		"root": false
+	},
+	"b754cb2b-94e8-4268-ac75-3ee807e09133": {
+		"definition": "+2.5%fortune",
+		"x": -82,
+		"y": 47.34272207354931,
+		"root": false
+	},
+	"a75db540-32f5-4ba0-a969-b68a56a27a35": {
+		"definition": "+2.5%sprint",
+		"x": -41,
+		"y": -165.69952725742255,
+		"root": false
+	},
+	"ad6e364c-df78-4c01-be1a-7038a63c63c3": {
+		"definition": "+2.5%sprint",
+		"x": 41,
+		"y": -165.69952725742255,
+		"root": false
+	},
+	"3935af35-238e-4928-8025-0d9b328cbdf4": {
+		"definition": "+2.5%sprint",
+		"x": 164,
+		"y": 47.34272207354931,
+		"root": false
+	},
+	"a997326d-56c4-4b3c-805f-14c87c5b3dd0": {
+		"definition": "+2.5%sprint",
+		"x": 123,
+		"y": 118.35680518387328,
+		"root": false
+	},
+	"f69f3624-0cc8-4085-814e-9a3c3fd99752": {
+		"definition": "+2.5%sprint",
+		"x": -123,
+		"y": 118.35680518387328,
+		"root": false
+	},
+	"887b0b57-cf38-4953-85df-314d845304cc": {
+		"definition": "+2.5%sprint",
+		"x": -164,
+		"y": 47.34272207354931,
+		"root": false
+	}
+}

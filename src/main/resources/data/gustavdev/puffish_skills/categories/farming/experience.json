@@ -1,0 +1,72 @@
+{
+	"experience_per_level": {
+		"type": "values",
+		"data": {
+			"values": [
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				500,
+				500,
+				500,
+				500,
+				500,
+				500,
+				500,
+				750,
+				750,
+				750,
+				750,
+				1000
+			]
+		}
+	},
+  "sources": [
+    {
+      "type": "puffish_skills:mine_block",
+      "data": {
+        "variables": {
+          "silk_touch": {
+            "operations": [
+              {
+                "type": "get_tool_item_stack"
+              },
+              {
+                "type": "puffish_skills:test",
+                "data": {
+                  "nbt": "{Enchantments:[{id:\"minecraft:silk_touch\"}]}"
+                }
+              }
+            ]
+          },
+          "crops": {
+            "operations": [
+              {
+                "type": "get_mined_block_state"
+              },
+              {
+                "type": "puffish_skills:test",
+                "data": {
+                  "block": "#minecraft:crops"
+                }
+              }
+            ]
+          }
+        },
+        "experience": [
+          {
+            "condition": "crops",
+            "expression": "2"
+          }
+        ]
+      }
+    }
+  ]
+}

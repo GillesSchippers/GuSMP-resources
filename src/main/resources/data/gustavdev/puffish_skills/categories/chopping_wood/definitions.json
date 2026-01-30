@@ -1,0 +1,108 @@
+{
+  "+2.5%miningspeed": {
+    "title": "+2.5% mining speed",
+    "icon": {
+      "type": "effect",
+      "data": {
+        "effect": "haste"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:mining_speed",
+          "value": 0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "+2.5% mining speed with every tool",
+    "cost": 1
+  },
+  "+5%axe": {
+    "title": "+5% axe speed",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "iron_axe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:axe_speed",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "+5% mining speed with axe",
+    "cost": 1
+  },
+  "5%knockback": {
+    "title": "+5% knockback",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "golden_axe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:knockback",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "+5% knockback on mobs",
+    "cost": 1
+  },
+  "+32oak": {
+    "title": "get 32 oak logs",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "oak_log"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:command",
+        "data": {
+          "command": "give @s oak_log 32"
+        }
+      }
+    ],
+    "description": "Instantly get 32 oak logs",
+    "cost": 2
+  }
+}

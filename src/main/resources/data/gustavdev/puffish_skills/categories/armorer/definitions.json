@@ -1,0 +1,82 @@
+{
+  "-2.5%anvil": {
+    "title": "-2.5% anvil cost",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:repair_cost",
+          "value": -0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "Reduce anvil cost with 2.5%"
+  },
+  "2.5%resistance": {
+    "title": "+2.5% resistance",
+    "icon": {
+      "type": "effect",
+      "data": {
+        "effect": "resistance"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:resistance",
+          "value": 0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "Get permanent +2.5% resistance",
+    "cost": 1
+  },
+  "-2.5%speed": {
+    "title": "-2.5% sprinting speed",
+    "icon": {
+      "type": "effect",
+      "data": {
+        "effect": "slowness"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "puffish_attributes:sprinting_speed",
+          "value": -0.025,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "description": "It's negative, but the rewards after this are worth it!  \n this skill costs nothing",
+    "cost": 0
+  }
+}

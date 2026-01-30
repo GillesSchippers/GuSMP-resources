@@ -1,0 +1,17 @@
+{
+  "title": "Armorer",
+  "unlocked_by_default": true,
+  "exclusive_root": true,
+  "background": {
+    "texture": "minecraft:textures/block/iron_block.png",
+    "width": 32,
+    "height": 32,
+    "position": "tile"
+  },
+  "icon": {
+    "type": "item",
+    "data": {
+      "item": "anvil"
+    }
+  }
+}

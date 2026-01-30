@@ -1,0 +1,277 @@
+{
+	"experience_per_level": {
+		"type": "values",
+		"data": {
+			"values": [
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				250,
+				500,
+				500,
+				500,
+				500,
+				500,
+				500,
+				500,
+				750,
+				750,
+				750,
+				750,
+				1000
+			]
+		}
+	},
+	"sources": [
+		{
+			"type": "puffish_skills:mine_block",
+			"data": {
+				"variables": {
+					"silk_touch": {
+						"operations": [
+							{
+								"type": "get_tool_item_stack"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"nbt": "{Enchantments:[{id:\"minecraft:silk_touch\"}]}"
+								}
+							}
+						]
+					},
+					"dirt": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "dirt"
+								}
+							}
+						]
+					},
+					"grass": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "grass_block"
+								}
+							}
+						]
+					},
+					"sand": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "sand"
+								}
+							}
+						]
+					},
+					"red_sand": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "red_sand"
+								}
+							}
+						]
+					},
+					"clay": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "clay"
+								}
+							}
+						]
+					},
+					"mud": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "mud"
+								}
+							}
+						]
+					},
+					"muddy_mangrove_roots": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "muddy_mangrove_roots"
+								}
+							}
+						]
+					},
+					"rooted_dirt": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "rooted_dirt"
+								}
+							}
+						]
+					},
+					"mycelium": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "mycelium"
+								}
+							}
+						]
+					},
+					"podzol": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "podzol"
+								}
+							}
+						]
+					},
+					"dirt_path": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "dirt_path"
+								}
+							}
+						]
+					},
+					"coarse_dirt": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "coarse_dirt"
+								}
+							}
+						]
+					},
+					"gravel": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "gravel"
+								}
+							}
+						]
+					},
+					"snow_block": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "snow_block"
+								}
+							}
+						]
+					},
+					"soul_sand": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "soul_sand"
+								}
+							}
+						]
+					},
+					"soul_soil": {
+						"operations": [
+							{
+								"type": "get_mined_block_state"
+							},
+							{
+								"type": "puffish_skills:test",
+								"data": {
+									"block": "soul_soil"
+								}
+							}
+						]
+					}
+} ,
+
+				"experience": [
+					{
+						"condition": "(dirt | sand | red_sand | snow_block | gravel)",
+						"expression": "1"
+					},
+					{
+						"condition": "(soul_soil | soul_sand | grass | coarse_dirt | dirt_path | mycelium | podzol | mud | clay)",
+						"expression": "2"
+					},
+					{
+						"condition": "(rooted_dirt | muddy_mangrove_roots)",
+						"expression": "10"
+					}
+				]
+			}
+
+		}
+	]
+}
