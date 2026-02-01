@@ -1,0 +1,52 @@
+{
+    "type": "origins:active_self",
+	"name": "Liquid Courage",
+	"description": "Take a swig from your lucky flask. The dwarf whiskey inside may not make you invincible, but it sure feels like it!",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+				"type": "origins:play_sound",
+				"sound": "minecraft:entity.generic.drink"
+            },
+            {
+                "type": "origins:apply_effect",
+                "effects": [
+                    {
+                        "effect": "minecraft:resistance",
+                        "duration": 60,
+                        "amplifier": 2,
+                        "is_ambient": true,
+                        "show_particles": true,
+                        "show_icon": true
+                    },
+                    {
+                        "effect": "minecraft:strength",
+                        "duration": 60,
+                        "amplifier": 1,
+                        "is_ambient": true,
+                        "show_particles": true,
+                        "show_icon": true
+                    },
+                    {
+                        "effect": "minecraft:nausea",
+                        "duration": 60,
+                        "amplifier": 0,
+                        "is_ambient": true,
+                        "show_particles": true,
+                        "show_icon": true
+                    }
+                ]
+            }
+        ]
+    },
+    "cooldown": 180,
+    "hud_render": {
+		"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+		"bar_index": 12,
+		"inverted": true
+    },
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

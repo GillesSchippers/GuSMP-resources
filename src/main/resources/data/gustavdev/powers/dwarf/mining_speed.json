@@ -1,0 +1,12 @@
+{
+    "type": "origins:modify_break_speed",
+	"name": "Dwarven Work Ethic",
+	"description": "Dwarves give 110% no matter the job. You break all blocks at double the rate, but need to eat a lot to keep it up.",
+    "condition": {
+		"type": "origins:using_effective_tool"
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 1.1
+    }
+}

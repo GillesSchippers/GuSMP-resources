@@ -1,0 +1,17 @@
+{
+  "powers": [
+    "gustavdev:dwarf/dwarven_toughness",
+    "gustavdev:dwarf/liquid_courage",
+    "gustavdev:dwarf/mining_speed",
+    "gustavdev:dwarf/no_bows",
+    "gustavdev:dwarf/poison_immunity",
+    "gustavdev:dwarf/pickaxeless_stone",
+    "gustavdev:dwarf/small_size"
+  ],
+  "icon": "minecraft:anvil",
+  "order": 2,
+  "impact": 2,
+  "name": "Dwarf",
+  "description": "Though, tough and tenatious, this fellas of shorter stature, might be a little too heavy for pool parties, and a way to anxious to leave their house to go to them.",
+  "loading_priority": 1
+}

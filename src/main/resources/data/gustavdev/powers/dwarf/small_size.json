@@ -1,0 +1,11 @@
+{
+  "type": "origins:attribute",
+  "name": "Small Size",
+  "description": "You are shorter and more compact than most.",
+  "modifier": {
+    "name": "Dwarven Size",
+    "attribute": "minecraft:scale",
+    "value": -0.15,
+    "operation": "multiply_total"
+  }
+}

@@ -1,0 +1,13 @@
+{
+	
+	"type": "origins:attribute",
+	"modifier": {
+		"name": "Luck",
+		"attribute": "minecraft:luck",
+		"value": 2,
+		"operation": "addition"
+	},
+	
+	"name": "Loot Gob",
+	"description": "MINE MINE MINE"
+}

@@ -1,0 +1,13 @@
+{
+	
+		"type": "origins:attribute",
+		"modifier": {
+			"name": "Max Health Decrease",
+			"attribute": "minecraft:max_health",
+			"value": -4,
+			"operation": "addition"
+		},
+	
+	"name": "General Lankyness",
+	"description": "GOBLIN SMART, GOBLIN NO TRAIN"
+}

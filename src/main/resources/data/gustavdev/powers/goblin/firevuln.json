@@ -1,0 +1,16 @@
+{
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"name": "More fire damage taken",
+			"value": 0.5,
+			"operation": "multiply_base"
+		},
+		"damage_condition": {
+			"type": "origins:in_tag",
+			"tag": "minecraft:is_fire"
+		},
+		
+		
+	"name": "Fire Weakness",
+	"description": " \"Historically weak to fire\" -Every single thing alive"
+}

@@ -1,0 +1,11 @@
+{
+  "order": 1,
+  "replace": false,
+  "origins": [
+    "gustavdev:goblin",
+    "gustavdev:dwarf"
+  ],
+  "name": "GuSMP Origins",
+  "missing_name": "None",
+  "missing_description": "You currently don't have an origin selected."
+}
