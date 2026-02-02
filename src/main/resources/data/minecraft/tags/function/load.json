@@ -1,6 +1,5 @@
 {
     "values": [
-        "lipartefacts:load",
         "nocreepergrief:app/setup"
     ]
 }
