@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.gustavserv.gustavdev.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ServerPlayerInventoryMixin",
+    "AccessoriesIntegrationMixin",
+    "TravelersBackpackMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

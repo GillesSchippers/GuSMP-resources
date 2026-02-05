@@ -9,9 +9,14 @@
 	],
 	"environment": "*",
 	"entrypoints": {
-		"main": [],
+		"main": [
+			"com.gustavserv.gustavdev.GustavDevMod"
+		],
 		"client": []
 	},
+	"mixins": [
+		"gustavdev.mixins.json"
+	],
 	"depends": {
 		"fabricloader": ">=0.18.2",
 		"minecraft": "~1.21",
