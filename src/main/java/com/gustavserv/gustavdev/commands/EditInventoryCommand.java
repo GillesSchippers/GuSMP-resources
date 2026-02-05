@@ -12,16 +12,13 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.commands.arguments.item.ItemInput;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 public class EditInventoryCommand {
     
@@ -34,7 +31,7 @@ public class EditInventoryCommand {
                 .then(Commands.argument("target", EntityArgument.player())
                     .then(Commands.literal("set")
                         .then(Commands.argument("slot", IntegerArgumentType.integer(0))
-                            .then(Commands.argument("item", ItemArgument.item(Commands.getDispatcher().getRegistryAccess()))
+                            .then(Commands.argument("item", ItemArgument.item())
                                 .executes(ctx -> setPlayerInventorySlot(ctx))
                             )
                         )
@@ -62,7 +59,7 @@ public class EditInventoryCommand {
                     .then(Commands.literal("set")
                         .then(Commands.argument("slotType", StringArgumentType.string())
                             .then(Commands.argument("index", IntegerArgumentType.integer(0))
-                                .then(Commands.argument("item", ItemArgument.item(Commands.getDispatcher().getRegistryAccess()))
+                                .then(Commands.argument("item", ItemArgument.item())
                                     .executes(ctx -> setAccessorySlot(ctx))
                                 )
                             )

@@ -1,7 +1,5 @@
 package com.gustavserv.gustavdev.util;
 
-import com.tiviacz.travelersbackpack.inventory.ITravelersBackpackContainer;
-import com.tiviacz.travelersbackpack.inventory.TravelersBackpackContainer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -9,7 +7,6 @@ import net.minecraft.world.entity.player.Inventory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BackpackHelper {
     
