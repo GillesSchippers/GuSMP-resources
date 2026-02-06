@@ -1,0 +1,1 @@
+schedule function gustavdev:app/execute 1s
