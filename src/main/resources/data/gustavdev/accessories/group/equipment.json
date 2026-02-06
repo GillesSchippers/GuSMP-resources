@@ -3,8 +3,7 @@
   "order": 5,
   "slots": [
     "totem",
-    "elytra",
-    "goggles"
+    "elytra"
   ],
   "icon": "gustavdev:container/group/equipment"
 }
