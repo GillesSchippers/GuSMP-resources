@@ -1,12 +1,12 @@
 package dev.gustavdev.mixin;
 
-import dev.gustavdev.AccessoriesIntegration;
 import fr.factionbedrock.aerialhell.Item.EffectTotemItem;
 import fr.factionbedrock.aerialhell.Registry.AerialHellItems;
 import fr.factionbedrock.aerialhell.Registry.AerialHellMobEffects;
 import fr.factionbedrock.aerialhell.Registry.Misc.AerialHellTags;
 import fr.factionbedrock.aerialhell.Util.EntityHelper;
 import fr.factionbedrock.aerialhell.Util.ItemHelper;
+import io.wispforest.accessories.api.AccessoriesCapability;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -33,9 +33,11 @@ public abstract class EffectTotemItemMixin {
             Item stackItem = stack.getItem();
             boolean isEquipped = false;
             
-            // Check accessories slots FIRST (if Accessories is available)
-            if (AccessoriesIntegration.isAccessoriesAvailable()) {
-                isEquipped = AccessoriesIntegration.isEquippedInAccessoriesSlot(livingEntityIn, stackItem);
+            // Check accessories slots FIRST using direct API call
+            var accessoriesCapability = AccessoriesCapability.get(livingEntityIn);
+            if (accessoriesCapability != null) {
+                var equippedSlots = accessoriesCapability.getEquipped(stackItem);
+                isEquipped = !equippedSlots.isEmpty();
             }
             
             // Only check main/off-hand if not found in accessories slot
