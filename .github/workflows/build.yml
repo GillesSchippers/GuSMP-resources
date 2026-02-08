@@ -84,6 +84,13 @@ jobs:
           name: accessories-artifacts
           path: accessories/fabric/build/libs/
 
+      - name: capture AeriaHell artifacts
+        if: runner.os == 'Linux' && matrix.java == '21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: AeriaHell-artifacts
+          path: AeriaHell/build/libs/
+
       - name: capture gustavdev artifacts
         if: runner.os == 'Linux' && matrix.java == '21'
         uses: actions/upload-artifact@v4
