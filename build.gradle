@@ -46,11 +46,6 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
-	
-	// MixinExtras annotation processor for compile-time mixin processing
-	// FabricLoader 0.15.0+ bundles MixinExtras at runtime, so we only need the annotation processor
-	annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.3")
-	
 }
 
 processResources {
