@@ -50,7 +50,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	// Accessories API
-	modImplementation "io.wispforest:accessories-fabric:1.1.8+1.21"
+	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
 	
 }
 
