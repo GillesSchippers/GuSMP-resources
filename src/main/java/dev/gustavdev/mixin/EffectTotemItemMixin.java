@@ -29,92 +29,50 @@ public abstract class EffectTotemItemMixin {
     
     @Shadow private int timer;
     
-    // Cache for reflected methods to avoid repeated lookups
+    // Cache for reflected methods to avoid repeated lookups (only used if needed)
     private static Method accessoriesCapabilityGetMethod;
     private static Method capabilityGetEquippedMethod;
-    private static boolean accessoriesChecked = false;
-    private static boolean accessoriesAvailable = false;
+    private static Boolean accessoriesAvailable = null; // null = not checked, true/false = checked
     
     @Inject(method = "inventoryTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainHandStack()Lnet/minecraft/item/ItemStack;"))
     private void checkAccessoriesSlot(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot, CallbackInfo ci) {
         if (!world.isClient() && this.timer <= 0 && entity instanceof LivingEntity livingEntityIn) {
-            // Original check - main hand and off-hand
             Item stackItem = stack.getItem();
+            
+            // Check if item is in main hand or off-hand (original behavior)
             boolean isInMainOrOffHand = livingEntityIn.getMainHandStack().getItem() == stackItem || 
                                         livingEntityIn.getOffHandStack().getItem() == stackItem;
             
-            // New check - accessories slot (using reflection for soft dependency)
-            boolean isInAccessoriesSlot = false;
+            // Only check accessories if not in main/off-hand
             if (!isInMainOrOffHand) {
-                isInAccessoriesSlot = checkAccessoriesSlotViaReflection(livingEntityIn, stackItem);
+                // Try to detect if this is being called from an accessories slot
+                // First, check if Accessories API is available and use it only if needed
+                boolean isInAccessoriesSlot = isEquippedInAccessoriesSlot(livingEntityIn, stackItem);
+                
+                if (!isInAccessoriesSlot) {
+                    // Item is not equipped anywhere that we can detect, skip
+                    return;
+                }
             }
             
-            // If in accessories slot but not in main/off hand, we need to execute the effect logic
-            // that would have been skipped by the original method
-            if (isInAccessoriesSlot) {
-                EffectTotemItem thisItem = (EffectTotemItem)(Object)this;
-                
-                if (thisItem == AerialHellItems.REGENERATION_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1200, 0));
-                } else if (thisItem == AerialHellItems.SPEED_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0));
-                } else if (thisItem == AerialHellItems.SPEED_II_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 1));
-                } else if (thisItem == AerialHellItems.NIGHT_VISION_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1200, 0));
-                } else if (thisItem == AerialHellItems.AGILITY_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0));
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1200, 0));
-                } else if (thisItem == AerialHellItems.HEAD_IN_THE_CLOUDS_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.HEAD_IN_THE_CLOUDS, 1000, 0));
-                } else if (thisItem == AerialHellItems.HERO_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 1200, 0));
-                } else if (thisItem == AerialHellItems.GOD_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.GOD, 1200, 0));
-                } else if (thisItem == AerialHellItems.CURSED_TOTEM) {
-                    if (!(ItemHelper.getItemInTagCount(EntityHelper.getEquippedHumanoidArmorItemList(livingEntityIn), AerialHellTags.Items.SHADOW_ARMOR) >= 4)) {
-                        livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 300, 0));
-                        livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 600, 0));
-                        livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 900, 0));
-                    }
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1500, 2));
-                } else if (thisItem == AerialHellItems.SHADOW_TOTEM) {
-                    livingEntityIn.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.SHADOW_IMMUNITY, 1000, 0));
-                }
-                
-                this.timer = 300;
-            }
+            // Apply totem effects (item is equipped somewhere)
+            applyTotemEffects((EffectTotemItem)(Object)this, livingEntityIn);
+            this.timer = 300;
         }
     }
     
     /**
-     * Check if the item is equipped in an Accessories slot using reflection.
-     * This allows the mod to work without requiring Accessories as a compile-time dependency.
+     * Check if item is equipped in an Accessories slot.
+     * Uses reflection to avoid compile-time dependency on Accessories API.
      * 
      * @param entity The living entity to check
      * @param item The item to look for
-     * @return true if the item is equipped in an accessories slot, false otherwise
+     * @return true if the item is equipped in an accessories slot, false otherwise or if Accessories is not available
      */
-    private static boolean checkAccessoriesSlotViaReflection(LivingEntity entity, Item item) {
-        // One-time check to see if Accessories is available
-        if (!accessoriesChecked) {
-            accessoriesChecked = true;
-            try {
-                // Try to load the AccessoriesCapability class
-                Class<?> accessoriesCapabilityClass = Class.forName("io.wispforest.accessories.api.AccessoriesCapability");
-                // Get the static 'get' method: AccessoriesCapability.get(LivingEntity)
-                accessoriesCapabilityGetMethod = accessoriesCapabilityClass.getMethod("get", LivingEntity.class);
-                
-                // Get the 'getEquipped' method from the returned capability object
-                // We need to find the interface/class that the get() method returns
-                Class<?> capabilityClass = Class.forName("io.wispforest.accessories.api.AccessoriesCapability");
-                capabilityGetEquippedMethod = capabilityClass.getMethod("getEquipped", Item.class);
-                
-                accessoriesAvailable = true;
-            } catch (ClassNotFoundException | NoSuchMethodException e) {
-                // Accessories mod is not present, which is fine
-                accessoriesAvailable = false;
-            }
+    private static boolean isEquippedInAccessoriesSlot(LivingEntity entity, Item item) {
+        // Lazy initialization: only check for Accessories API on first call
+        if (accessoriesAvailable == null) {
+            accessoriesAvailable = initializeAccessoriesReflection();
         }
         
         // If Accessories is not available, return false
@@ -138,8 +96,68 @@ public abstract class EffectTotemItemMixin {
             return equippedSlots != null && !equippedSlots.isEmpty();
             
         } catch (Exception e) {
-            // If anything goes wrong with reflection, just return false
+            // If reflection fails, return false
             return false;
+        }
+    }
+    
+    /**
+     * Initialize reflection for Accessories API.
+     * This is only called once to check if Accessories is available.
+     * 
+     * @return true if Accessories API is available and reflection setup succeeded, false otherwise
+     */
+    private static boolean initializeAccessoriesReflection() {
+        try {
+            // Try to load the AccessoriesCapability class
+            Class<?> accessoriesCapabilityClass = Class.forName("io.wispforest.accessories.api.AccessoriesCapability");
+            
+            // Get the static 'get' method: AccessoriesCapability.get(LivingEntity)
+            accessoriesCapabilityGetMethod = accessoriesCapabilityClass.getMethod("get", LivingEntity.class);
+            
+            // Get the 'getEquipped' method from the capability interface
+            capabilityGetEquippedMethod = accessoriesCapabilityClass.getMethod("getEquipped", Item.class);
+            
+            return true;
+        } catch (ClassNotFoundException | NoSuchMethodException e) {
+            // Accessories mod is not present, which is fine
+            return false;
+        }
+    }
+    
+    /**
+     * Apply the appropriate totem effects based on which totem this is.
+     * 
+     * @param totem The totem item instance
+     * @param entity The living entity to apply effects to
+     */
+    private static void applyTotemEffects(EffectTotemItem totem, LivingEntity entity) {
+        if (totem == AerialHellItems.REGENERATION_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1200, 0));
+        } else if (totem == AerialHellItems.SPEED_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0));
+        } else if (totem == AerialHellItems.SPEED_II_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 1));
+        } else if (totem == AerialHellItems.NIGHT_VISION_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1200, 0));
+        } else if (totem == AerialHellItems.AGILITY_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1200, 0));
+        } else if (totem == AerialHellItems.HEAD_IN_THE_CLOUDS_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.HEAD_IN_THE_CLOUDS, 1000, 0));
+        } else if (totem == AerialHellItems.HERO_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 1200, 0));
+        } else if (totem == AerialHellItems.GOD_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.GOD, 1200, 0));
+        } else if (totem == AerialHellItems.CURSED_TOTEM) {
+            if (!(ItemHelper.getItemInTagCount(EntityHelper.getEquippedHumanoidArmorItemList(entity), AerialHellTags.Items.SHADOW_ARMOR) >= 4)) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 300, 0));
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 600, 0));
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 900, 0));
+            }
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1500, 2));
+        } else if (totem == AerialHellItems.SHADOW_TOTEM) {
+            entity.addStatusEffect(new StatusEffectInstance(AerialHellMobEffects.SHADOW_IMMUNITY, 1000, 0));
         }
     }
 }
