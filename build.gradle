@@ -18,19 +18,6 @@ repositories {
 	// for more information about repositories.
 	
 	mavenLocal()
-	
-	maven {
-		name = "Wispforest"
-		url = "https://maven.wispforest.io"
-	}
-	
-	maven {
-		name = "Modrinth"
-		url = "https://api.modrinth.com/maven"
-		content {
-			includeGroup "maven.modrinth"
-		}
-	}
 }
 
 loom {
@@ -54,7 +41,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
-	modImplementation "maven.modrinth:aerialhell:${project.aerialhell_version}"
+	//modImplementation "maven.modrinth:aerialhell:${project.aerialhell_version}"
+	modImplementation "fr.factionbedrock.aerialhell:aerialhell:${project.aerialhell_version}"
 	
 }
 
