@@ -1,8 +1,8 @@
 package dev.gustavdev.util;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -13,7 +13,7 @@ public class GameplayUtil {
 
     private static final TagKey<Item> TOTEM_TAG = TagKey.create(
         BuiltInRegistries.ITEM.key(),
-        Identifier.of("accessories", "totem")
+        ResourceLocation.fromNamespaceAndPath("accessories", "totem")
     );
 
     /**
