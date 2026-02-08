@@ -1,17 +1,5 @@
 {
   "values": [
-    "minecraft:totem_of_undying",
-    "friendsandfoes:totem_of_illusion",
-    "friendsandfoes:totem_of_freezing",
-    "aerialhell:regeneration_totem",
-    "aerialhell:speed_totem",
-    "aerialhell:speed_ii_totem",
-    "aerialhell:night_vision_totem",
-    "aerialhell:agility_totem",
-    "aerialhell:hero_totem",
-    "aerialhell:head_in_the_clouds_totem",
-    "aerialhell:god_totem",
-    "aerialhell:cursed_totem",
-    "aerialhell:shadow_totem"
+    "minecraft:totem_of_undying"
   ]
 }
