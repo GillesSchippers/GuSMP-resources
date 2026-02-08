@@ -21,6 +21,10 @@ public class InteractionHandMixin {
 
     @Shadow @Final @Mutable private static InteractionHand[] $VALUES;
 
+    /**
+     * Mixin accessor for the InteractionHand enum constructor.
+     * This method is replaced at runtime by Mixin and never actually executes the throw statement.
+     */
     @Invoker("<init>")
     static InteractionHand invokeInit(String name, int id) {
         throw new UnsupportedOperationException();
