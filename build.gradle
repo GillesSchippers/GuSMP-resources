@@ -17,6 +17,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	
+	// Local Maven repository - checks here first for locally built dependencies
+	// To use a locally built Accessories: run `./gradlew publishToMavenLocal` in the Accessories project
+	mavenLocal()
+	
 	// Wispforest maven for Accessories API
 	maven {
 		name = "Wispforest"
