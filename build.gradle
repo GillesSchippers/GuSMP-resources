@@ -59,6 +59,11 @@ dependencies {
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
 	
+	// MixinExtras for advanced mixin functionality
+	implementation("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
+	annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
+	include("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
+	
 }
 
 processResources {
