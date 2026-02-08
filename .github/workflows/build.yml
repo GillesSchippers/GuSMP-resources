@@ -44,13 +44,43 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: gradle
 
+      - name: Get owo-lib commit hash
+        id: owo-lib-commit
+        working-directory: owo-lib
+        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Get accessories commit hash
+        id: accessories-commit
+        working-directory: accessories
+        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Cache owo-lib build
+        id: cache-owo-lib
+        uses: actions/cache@v4
+        with:
+          path: |
+            owo-lib/build
+            ~/.m2/repository/io/wispforest/owo-lib
+          key: owo-lib-build-${{ runner.os }}-${{ steps.owo-lib-commit.outputs.hash }}
+
+      - name: Cache accessories build
+        id: cache-accessories
+        uses: actions/cache@v4
+        with:
+          path: |
+            accessories/fabric/build
+            ~/.m2/repository/io/wispforest/accessories-fabric
+          key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
+
       - name: publish owo-lib to Maven Local
+        if: steps.cache-owo-lib.outputs.cache-hit != 'true'
         working-directory: owo-lib
         run: |
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
 
       - name: publish accessories to Maven Local
+        if: steps.cache-accessories.outputs.cache-hit != 'true'
         working-directory: accessories
         run: |
           chmod +x gradlew
