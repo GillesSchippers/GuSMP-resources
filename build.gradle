@@ -58,8 +58,6 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
-	//modImplementation "maven.modrinth:aerialhell:${project.aerialhell_version}"
-	modImplementation "fr.factionbedrock.aerialhell:aerialhell:${project.aerialhell_version}"
 	
 }
 
