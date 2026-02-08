@@ -21,11 +21,11 @@ jobs:
         with:
           path: gustavdev
 
-      - name: checkout AeriaHell
+      - name: checkout AerialHell
         uses: actions/checkout@v4
         with:
-          repository: GillesSchippers/AeriaHell
-          path: AeriaHell
+          repository: GillesSchippers/AerialHell
+          path: AerialHell
 
       - name: checkout accessories
         uses: actions/checkout@v4
@@ -58,8 +58,8 @@ jobs:
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
 
-      - name: publish AeriaHell to Maven Local
-        working-directory: AeriaHell
+      - name: publish AerialHell to Maven Local
+        working-directory: AerialHell
         run: |
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
@@ -84,12 +84,12 @@ jobs:
           name: accessories-artifacts
           path: accessories/fabric/build/libs/
 
-      - name: capture AeriaHell artifacts
+      - name: capture AerialHell artifacts
         if: runner.os == 'Linux' && matrix.java == '21'
         uses: actions/upload-artifact@v4
         with:
-          name: AeriaHell-artifacts
-          path: AeriaHell/build/libs/
+          name: AerialHell-artifacts
+          path: AerialHell/build/libs/
 
       - name: capture gustavdev artifacts
         if: runner.os == 'Linux' && matrix.java == '21'
