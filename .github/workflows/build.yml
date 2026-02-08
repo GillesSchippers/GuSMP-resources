@@ -62,7 +62,7 @@ jobs:
 
       - name: Cache owo-lib build
         id: cache-owo-lib
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             owo-lib/build
@@ -71,7 +71,7 @@ jobs:
 
       - name: Cache accessories build
         id: cache-accessories
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             accessories/fabric/build
@@ -85,12 +85,30 @@ jobs:
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
 
+      - name: Save owo-lib cache
+        if: steps.cache-owo-lib.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            owo-lib/build
+            ~/.m2/repository/io/wispforest/owo-lib
+          key: owo-lib-build-${{ runner.os }}-${{ steps.owo-lib-commit.outputs.hash }}
+
       - name: publish accessories to Maven Local
         if: steps.cache-accessories.outputs.cache-hit != 'true'
         working-directory: accessories
         run: |
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
+
+      - name: Save accessories cache
+        if: steps.cache-accessories.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            accessories/fabric/build
+            ~/.m2/repository/io/wispforest/accessories-fabric
+          key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
 
       - name: build gustavdev
         working-directory: gustavdev
