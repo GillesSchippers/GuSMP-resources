@@ -17,17 +17,13 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	
-	// Local Maven repository - checks here first for locally built dependencies
-	// To use a locally built Accessories: run `./gradlew publishToMavenLocal` in the Accessories project
 	mavenLocal()
 	
-	// Wispforest maven for Accessories API
 	maven {
 		name = "Wispforest"
 		url = "https://maven.wispforest.io"
 	}
 	
-	// Modrinth maven for AerialHell and other mods
 	maven {
 		name = "Modrinth"
 		url = "https://api.modrinth.com/maven"
@@ -57,10 +53,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
-	// Accessories API - required for totem slot support
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
-	
-	// AerialHell - required for totem items and effects
 	modImplementation "maven.modrinth:aerialhell:${project.aerialhell_version}"
 	
 }
