@@ -20,7 +20,7 @@
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*",
-		"accessories": ">=1.1.0",
-		"aerialhell": ">=3.6.0"
+		"aerialhell": "*",
+		"accessories": "*"
 	}
 }
