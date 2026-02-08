@@ -44,6 +44,12 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: gradle
 
+      # Caching Strategy:
+      # - Cache owo-lib and accessories builds based on their commit hashes
+      # - When cache hits, skip expensive build/publish steps
+      # - Caches both build outputs and Maven Local artifacts
+      # - Gradle dependencies are cached by setup-java action above
+      
       - name: Get owo-lib commit hash
         id: owo-lib-commit
         working-directory: owo-lib
