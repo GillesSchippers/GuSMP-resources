@@ -6,8 +6,6 @@ import fr.factionbedrock.aerialhell.Registry.AerialHellMobEffects;
 import fr.factionbedrock.aerialhell.Registry.Misc.AerialHellTags;
 import fr.factionbedrock.aerialhell.Util.EntityHelper;
 import fr.factionbedrock.aerialhell.Util.ItemHelper;
-import io.wispforest.accessories.api.AccessoriesCapability;
-import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -23,12 +21,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 @Mixin(EffectTotemItem.class)
 public abstract class EffectTotemItemMixin {
     
     @Shadow private int timer;
+    
+    // Cache for reflected methods to avoid repeated lookups
+    private static Method accessoriesCapabilityGetMethod;
+    private static Method capabilityGetEquippedMethod;
+    private static boolean accessoriesChecked = false;
+    private static boolean accessoriesAvailable = false;
     
     @Inject(method = "inventoryTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainHandStack()Lnet/minecraft/item/ItemStack;"))
     private void checkAccessoriesSlot(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot, CallbackInfo ci) {
@@ -38,14 +43,10 @@ public abstract class EffectTotemItemMixin {
             boolean isInMainOrOffHand = livingEntityIn.getMainHandStack().getItem() == stackItem || 
                                         livingEntityIn.getOffHandStack().getItem() == stackItem;
             
-            // New check - accessories slot
+            // New check - accessories slot (using reflection for soft dependency)
             boolean isInAccessoriesSlot = false;
             if (!isInMainOrOffHand) {
-                var capability = AccessoriesCapability.get(livingEntityIn);
-                if (capability != null) {
-                    List<SlotReference> totemSlots = capability.getEquipped(stackItem);
-                    isInAccessoriesSlot = !totemSlots.isEmpty();
-                }
+                isInAccessoriesSlot = checkAccessoriesSlotViaReflection(livingEntityIn, stackItem);
             }
             
             // If in accessories slot but not in main/off hand, we need to execute the effect logic
@@ -83,6 +84,62 @@ public abstract class EffectTotemItemMixin {
                 
                 this.timer = 300;
             }
+        }
+    }
+    
+    /**
+     * Check if the item is equipped in an Accessories slot using reflection.
+     * This allows the mod to work without requiring Accessories as a compile-time dependency.
+     * 
+     * @param entity The living entity to check
+     * @param item The item to look for
+     * @return true if the item is equipped in an accessories slot, false otherwise
+     */
+    private static boolean checkAccessoriesSlotViaReflection(LivingEntity entity, Item item) {
+        // One-time check to see if Accessories is available
+        if (!accessoriesChecked) {
+            accessoriesChecked = true;
+            try {
+                // Try to load the AccessoriesCapability class
+                Class<?> accessoriesCapabilityClass = Class.forName("io.wispforest.accessories.api.AccessoriesCapability");
+                // Get the static 'get' method: AccessoriesCapability.get(LivingEntity)
+                accessoriesCapabilityGetMethod = accessoriesCapabilityClass.getMethod("get", LivingEntity.class);
+                
+                // Get the 'getEquipped' method from the returned capability object
+                // We need to find the interface/class that the get() method returns
+                Class<?> capabilityClass = Class.forName("io.wispforest.accessories.api.AccessoriesCapability");
+                capabilityGetEquippedMethod = capabilityClass.getMethod("getEquipped", Item.class);
+                
+                accessoriesAvailable = true;
+            } catch (ClassNotFoundException | NoSuchMethodException e) {
+                // Accessories mod is not present, which is fine
+                accessoriesAvailable = false;
+            }
+        }
+        
+        // If Accessories is not available, return false
+        if (!accessoriesAvailable) {
+            return false;
+        }
+        
+        try {
+            // Call AccessoriesCapability.get(entity)
+            Object capability = accessoriesCapabilityGetMethod.invoke(null, entity);
+            
+            if (capability == null) {
+                return false;
+            }
+            
+            // Call capability.getEquipped(item)
+            @SuppressWarnings("unchecked")
+            List<?> equippedSlots = (List<?>) capabilityGetEquippedMethod.invoke(capability, item);
+            
+            // If the list is not empty, the item is equipped
+            return equippedSlots != null && !equippedSlots.isEmpty();
+            
+        } catch (Exception e) {
+            // If anything goes wrong with reflection, just return false
+            return false;
         }
     }
 }
