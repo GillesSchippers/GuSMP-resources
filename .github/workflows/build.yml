@@ -21,6 +21,12 @@ jobs:
         with:
           path: gustavdev
 
+      - name: checkout AeriaHell
+        uses: actions/checkout@v4
+        with:
+          repository: GillesSchippers/AeriaHell
+          path: AeriaHell
+
       - name: checkout accessories
         uses: actions/checkout@v4
         with:
@@ -48,6 +54,12 @@ jobs:
 
       - name: publish accessories to Maven Local
         working-directory: accessories
+        run: |
+          chmod +x gradlew
+          ./gradlew publishToMavenLocal --no-daemon
+
+      - name: publish AeriaHell to Maven Local
+        working-directory: AeriaHell
         run: |
           chmod +x gradlew
           ./gradlew publishToMavenLocal --no-daemon
