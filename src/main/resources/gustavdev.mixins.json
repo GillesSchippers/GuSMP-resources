@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.gustavdev.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "plugin": "com.llamalad7.mixinextras.MixinExtrasBootstrap",
+  "mixins": [
+    "InteractionHandMixin",
+    "LivingEntityMixin",
+    "compat.PlayerInventoryStorageImplMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
