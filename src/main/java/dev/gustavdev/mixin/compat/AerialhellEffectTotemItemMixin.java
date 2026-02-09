@@ -2,6 +2,7 @@ package dev.gustavdev.mixin.compat;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.gustavdev.util.AccessoryUtil;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +47,8 @@ public abstract class AerialhellEffectTotemItemMixin {
         // If entity is a LivingEntity, check accessories
         if (entity instanceof LivingEntity livingEntity) {
             // First check if totem is already in main hand or off hand
-            if (livingEntity.getMainHandStack().getItem() == totemStack.getItem() || 
+            ItemStack mainHandStack = livingEntity.getItemInHand(InteractionHand.MAIN_HAND);
+            if (mainHandStack.getItem() == totemStack.getItem() || 
                 offHandStack.getItem() == totemStack.getItem()) {
                 // Already in hand, return original
                 return offHandStack;
