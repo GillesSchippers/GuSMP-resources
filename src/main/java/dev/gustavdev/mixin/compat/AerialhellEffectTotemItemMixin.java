@@ -16,6 +16,11 @@ import org.spongepowered.asm.mixin.injection.At;
  * IMPORTANT: This mixin ONLY affects AerialHell's totem items. It does not modify
  * vanilla totem behavior or other mods' totem implementations.
  * 
+ * OPTIONAL MIXIN: This mixin is marked as optional in gustavdev.mixins.json.
+ * If AerialHell is not installed at runtime, this mixin will not apply and will
+ * only produce a warning in the logs. The mod will continue to function normally
+ * without this mixin.
+ * 
  * This mixin enables triple wielding of AerialHell totems:
  * - Main hand: TotemA (original behavior)
  * - Off hand: TotemB (original behavior)
