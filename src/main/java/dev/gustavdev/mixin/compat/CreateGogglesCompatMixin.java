@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin.compat;
+package dev.gustavdev.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.gustavdev.util.AccessoryUtil;
