@@ -3,8 +3,10 @@ package dev.gustavdev.mixin.compat;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.gustavdev.util.AccessoryUtil;
 import dev.gustavdev.util.GameplayUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -65,9 +67,9 @@ public abstract class AerialhellEffectTotemItemMixin {
     )
     private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
                                                   ItemStack stack,
-                                                  net.minecraft.server.level.ServerLevel world,
+                                                  ServerLevel world,
                                                   Entity entity,
-                                                  net.minecraft.world.entity.EquipmentSlot slot) {
+                                                  EquipmentSlot slot) {
         // Only process for LivingEntity
         if (entity instanceof LivingEntity livingEntity) {
             // Check if this specific totem is already in main hand or off hand
