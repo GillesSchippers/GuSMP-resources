@@ -31,20 +31,24 @@ import org.spongepowered.asm.mixin.injection.At;
  * 
  * Technical details:
  * - AerialHell uses Yarn mappings, this project uses Mojang mappings
- * - The mixin is set to remap=false and uses Yarn package names in @At targets
+ * - Loom automatically remaps @At targets from Mojang to intermediary at compile time
+ * - At runtime, both mods use intermediary names, ensuring compatibility
  * - Only validated totem items (via GameplayUtil.isTotem) are returned from accessories
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem", remap = false)
+@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem")
 public abstract class AerialhellEffectTotemItemMixin {
 
     /**
      * Modifies the hand item check to also include accessories.
      * 
-     * Original condition in EffectTotemItem:
+     * Original condition in EffectTotemItem (Yarn mappings):
      * livingEntityIn.getMainHandStack().getItem() == this || livingEntityIn.getOffHandStack().getItem() == this
      * 
-     * We intercept the result of getOffHandStack() and replace it with the accessory totem if:
+     * At runtime (Mojang mappings):
+     * livingEntityIn.getMainHandItem().getItem() == this || livingEntityIn.getOffhandItem().getItem() == this
+     * 
+     * We intercept the result of getOffhandItem() and replace it with the accessory totem if:
      * 1. Neither main hand nor off hand has THIS specific totem, AND
      * 2. An accessory slot has THIS specific totem, AND
      * 3. The accessory item is validated as a totem via GameplayUtil.isTotem()
@@ -56,21 +60,20 @@ public abstract class AerialhellEffectTotemItemMixin {
         method = "inventoryTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/LivingEntity;getOffHandStack()Lnet/minecraft/item/ItemStack;"
+            target = "Lnet/minecraft/world/entity/LivingEntity;getOffhandItem()Lnet/minecraft/world/item/ItemStack;"
         )
     )
     private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
-                                                  ItemStack inventoryStack,
-                                                  net.minecraft.server.level.ServerLevel world,
+                                                  ItemStack stack,
+                                                  net.minecraft.world.level.Level world,
                                                   Entity entity,
-                                                  int slotId,
-                                                  boolean isSelected) {
+                                                  net.minecraft.world.entity.EquipmentSlot slot) {
         // Only process for LivingEntity
         if (entity instanceof LivingEntity livingEntity) {
             // Check if this specific totem is already in main hand or off hand
             ItemStack mainHandStack = livingEntity.getItemInHand(InteractionHand.MAIN_HAND);
-            if (mainHandStack.getItem() == inventoryStack.getItem() || 
-                offHandStack.getItem() == inventoryStack.getItem()) {
+            if (mainHandStack.getItem() == stack.getItem() || 
+                offHandStack.getItem() == stack.getItem()) {
                 // This totem is already in a hand, return original off hand
                 return offHandStack;
             }
@@ -78,7 +81,7 @@ public abstract class AerialhellEffectTotemItemMixin {
             // This totem is not in hands, check accessory slots for it
             ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
                 livingEntity,
-                itemStack -> itemStack.getItem() == inventoryStack.getItem() && GameplayUtil.isTotem(itemStack)
+                itemStack -> itemStack.getItem() == stack.getItem() && GameplayUtil.isTotem(itemStack)
             );
             
             // If we found this totem in accessories AND it's validated as a totem,
