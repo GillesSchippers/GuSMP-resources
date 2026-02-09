@@ -16,7 +16,7 @@ import java.util.Arrays;
  * This fake hand is used to check for totems in accessory slots
  * without requiring external mod dependencies.
  */
-@Mixin(value = InteractionHand.class, priority = 2000)
+@Mixin(InteractionHand.class)
 public class InteractionHandMixin {
 
     @Shadow @Final @Mutable private static InteractionHand[] $VALUES;
