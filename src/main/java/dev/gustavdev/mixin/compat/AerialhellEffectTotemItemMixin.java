@@ -31,11 +31,12 @@ import org.spongepowered.asm.mixin.injection.At;
  * 
  * Technical details:
  * - AerialHell uses Yarn mappings, this project uses Mojang mappings
- * - The mixin is set to remap=false and uses Mojang package names in @At targets (runtime mappings)
+ * - Loom automatically remaps @At targets from Mojang to intermediary at compile time
+ * - At runtime, both mods use intermediary names, ensuring compatibility
  * - Only validated totem items (via GameplayUtil.isTotem) are returned from accessories
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem", remap = false)
+@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem")
 public abstract class AerialhellEffectTotemItemMixin {
 
     /**
