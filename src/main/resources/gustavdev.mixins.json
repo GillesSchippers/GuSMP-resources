@@ -11,9 +11,7 @@
     "AerialhellTotemCompatMixin",
     "CreateGogglesCompatMixin"
   ],
-  "client": [
-    "CreateOverlayCompatMixin"
-  ],
+  "client": [],
   "mixinextras": {
 		"minVersion": "0.5.3"
 	},
