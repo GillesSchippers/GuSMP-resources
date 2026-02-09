@@ -43,6 +43,7 @@ public class GustavdevMixinPlugin implements IMixinConfigPlugin {
         }
         
         // Create compatibility mixins - only load if Create is present
+        // NOTE: Create-Fly fork also registers as "create" in Fabric, so this check works for both
         if (mixinClassName.equals("dev.gustavdev.mixin.compat.CreateGogglesCompatMixin") ||
             mixinClassName.equals("dev.gustavdev.mixin.compat.CreateOverlayCompatMixin")) {
             boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
