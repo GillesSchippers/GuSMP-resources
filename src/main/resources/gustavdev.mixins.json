@@ -13,7 +13,6 @@
     "compat.CreateGogglesCompatMixin"
   ],
   "client": [
-    "compat.CreateOverlayCompatMixin"
   ],
   "mixinextras": {
 		"minVersion": "0.5.3"

@@ -44,7 +44,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * - Only validated goggles items (via GameplayUtil.isGoggles) are returned from accessories
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Mixin(targets = "com.zurrtum.create.client.content.equipment.goggles.GoggleOverlayRenderer", remap = false)
+@Mixin(targets = "com.zurrtum.create.client.content.equipment.goggles.GoggleOverlayRenderer", priority = 1500)
 public abstract class CreateOverlayCompatMixin {
 
     /**
