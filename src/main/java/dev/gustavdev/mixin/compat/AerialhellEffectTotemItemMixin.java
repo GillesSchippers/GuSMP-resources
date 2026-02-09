@@ -41,15 +41,15 @@ public abstract class AerialhellEffectTotemItemMixin {
         )
     )
     private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
-                                                  ItemStack totemStack,
+                                                  ItemStack inventoryStack,
                                                   net.minecraft.server.level.ServerLevel world,
                                                   Entity entity) {
         // If entity is a LivingEntity, check accessories
         if (entity instanceof LivingEntity livingEntity) {
             // First check if totem is already in main hand or off hand
             ItemStack mainHandStack = livingEntity.getItemInHand(InteractionHand.MAIN_HAND);
-            if (mainHandStack.getItem() == totemStack.getItem() || 
-                offHandStack.getItem() == totemStack.getItem()) {
+            if (mainHandStack.getItem() == inventoryStack.getItem() || 
+                offHandStack.getItem() == inventoryStack.getItem()) {
                 // Already in hand, return original
                 return offHandStack;
             }
@@ -57,7 +57,7 @@ public abstract class AerialhellEffectTotemItemMixin {
             // Not in hands, check accessory slots for this specific totem
             ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
                 livingEntity,
-                itemStack -> itemStack.getItem() == totemStack.getItem()
+                itemStack -> itemStack.getItem() == inventoryStack.getItem()
             );
             
             // If we found this totem in accessories, return it
