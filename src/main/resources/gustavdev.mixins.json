@@ -9,6 +9,9 @@
     "LivingEntityMixin",
     "compat.PlayerInventoryStorageImplMixin"
   ],
+  "mixinextras": {
+		"minVersion": "0.5.3"
+	},
   "injectors": {
     "defaultRequire": 1
   }
