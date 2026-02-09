@@ -5,9 +5,9 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "dev.gustavdev.mixin.GustavdevMixinPlugin",
   "mixins": [
-    "fake.EquipmentSlotMixin",
-    "fake.InteractionHandMixin",
-    "main.LivingEntityMixin",
+    "EquipmentSlotMixin",
+    "InteractionHandMixin",
+    "LivingEntityMixin",
     "compat.PlayerInventoryStorageImplMixin",
     "compat.AerialhellTotemCompatMixin",
     "compat.CreateGogglesCompatMixin"

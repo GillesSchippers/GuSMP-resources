@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin.main;
+package dev.gustavdev.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;

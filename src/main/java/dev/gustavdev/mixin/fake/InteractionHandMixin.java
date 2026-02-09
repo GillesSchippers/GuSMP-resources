@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin.fake;
+package dev.gustavdev.mixin;
 
 import dev.gustavdev.util.FakeHandHolder;
 import net.minecraft.world.InteractionHand;
