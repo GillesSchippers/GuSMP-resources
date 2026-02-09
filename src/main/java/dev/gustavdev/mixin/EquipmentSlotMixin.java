@@ -7,6 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Invoker;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,11 +32,16 @@ public class EquipmentSlotMixin {
      * EquipmentSlot(String name, int ordinal, Type type, int index, int filterFlag, String serializedName)
      */
     @Invoker("<init>")
-    static EquipmentSlot invokeInit(String name, int ordinal, EquipmentSlot.Type type, int index, int filterFlag, String serializedName) {
+    private static EquipmentSlot invokeInit(String name, int ordinal, EquipmentSlot.Type type, int index, int filterFlag, String serializedName) {
         throw new UnsupportedOperationException();
     }
 
-    static {
+    /**
+     * Inject into the static initializer to add FAKE_HEAD after the enum constants are initialized.
+     * This ensures EquipmentSlot.Type is fully initialized before we access it.
+     */
+    @Inject(method = "<clinit>", at = @At("RETURN"))
+    private static void addFakeHead(CallbackInfo ci) {
         // Add FAKE_HEAD to the EquipmentSlot enum
         ArrayList<EquipmentSlot> list = new ArrayList<>(Arrays.asList($VALUES));
         int size = list.size();
