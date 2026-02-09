@@ -19,6 +19,10 @@ import org.spongepowered.asm.mixin.injection.At;
  * If Create is not installed at runtime, this mixin will not be loaded at all.
  * The mod will continue to function normally without this mixin.
  * 
+ * CREATE-FLY COMPATIBILITY: This mixin targets Create-Fly (com.zurrtum.create), a fork of
+ * the original Create mod. Create-Fly uses a different package structure than the original
+ * Create mod (com.simibubi.create), so the mixin target has been updated accordingly.
+ * 
  * This mixin enables goggles functionality in accessory slots:
  * - HEAD slot: Goggles work (original behavior)
  * - Accessory slot: Goggles work (added by this mixin)
