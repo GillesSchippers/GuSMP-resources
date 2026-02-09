@@ -2,6 +2,6 @@
   "replace": false,
   "amount": 1,
   "operation": "set",
-  "order": 800,
+  "order": 810,
   "icon": "gustavdev:container/slot/goggles"
 }
