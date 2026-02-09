@@ -3,7 +3,6 @@
   "minVersion": "0.8",
   "package": "dev.gustavdev.mixin",
   "compatibilityLevel": "JAVA_21",
-  "priority": 2000,
   "plugin": "dev.gustavdev.mixin.GustavdevMixinPlugin",
   "mixins": [
     "EquipmentSlotMixin",
