@@ -41,7 +41,7 @@ public abstract class AerialhellEffectTotemItemMixin {
     )
     private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
                                                   ItemStack totemStack,
-                                                  net.minecraft.server.world.ServerWorld world,
+                                                  net.minecraft.server.level.ServerLevel world,
                                                   Entity entity) {
         // If entity is a LivingEntity, check accessories
         if (entity instanceof LivingEntity livingEntity) {
