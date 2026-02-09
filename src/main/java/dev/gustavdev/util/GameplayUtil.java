@@ -13,7 +13,7 @@ public class GameplayUtil {
 
     private static final TagKey<Item> TOTEM_TAG = TagKey.create(
         BuiltInRegistries.ITEM.key(),
-        Identifier.of("accessories", "totem")
+        Identifier.fromNamespaceAndPath("accessories", "totem")
     );
 
     /**
