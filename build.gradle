@@ -23,16 +23,6 @@ repositories {
 	}
 	
 	maven {
-		name = "Shedaniel"
-		url = "https://maven.shedaniel.me/"
-	}
-	
-	maven {
-		name = "Jared"
-		url = "https://maven.blamejared.com/"
-	}
-	
-	maven {
 		name = "Modrinth"
 		url = "https://api.modrinth.com/maven"
 	}
