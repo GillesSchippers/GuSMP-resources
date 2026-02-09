@@ -3,15 +3,20 @@
   "minVersion": "0.8",
   "package": "dev.gustavdev.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "dev.gustavdev.mixin.GustavdevMixinPlugin",
   "mixins": [
     "InteractionHandMixin",
     "LivingEntityMixin",
-    "compat.PlayerInventoryStorageImplMixin"
+    "compat.PlayerInventoryStorageImplMixin",
+    "compat.AerialhellEffectTotemItemMixin"
   ],
   "mixinextras": {
 		"minVersion": "0.5.3"
 	},
   "injectors": {
     "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
 }
