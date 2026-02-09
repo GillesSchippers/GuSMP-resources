@@ -6,7 +6,8 @@
   "mixins": [
     "InteractionHandMixin",
     "LivingEntityMixin",
-    "compat.PlayerInventoryStorageImplMixin"
+    "compat.PlayerInventoryStorageImplMixin",
+    "compat.AerialhellEffectTotemItemMixin"
   ],
   "mixinextras": {
 		"minVersion": "0.5.3"
