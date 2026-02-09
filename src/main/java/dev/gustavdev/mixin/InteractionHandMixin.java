@@ -7,9 +7,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Invoker;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,16 +26,11 @@ public class InteractionHandMixin {
      * This method is replaced at runtime by Mixin and never actually executes the throw statement.
      */
     @Invoker("<init>")
-    private static InteractionHand invokeInit(String name, int id) {
+    static InteractionHand invokeInit(String name, int id) {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Inject into the static initializer to add FAKE_HAND after the enum constants are initialized.
-     * This ensures proper initialization order and avoids early class loading issues.
-     */
-    @Inject(method = "<clinit>", at = @At("RETURN"))
-    private static void addFakeHand(CallbackInfo ci) {
+    static {
         // Add FAKE_HAND to the InteractionHand enum
         ArrayList<InteractionHand> list = new ArrayList<>(Arrays.asList($VALUES));
         int size = list.size();

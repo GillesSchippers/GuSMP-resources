@@ -32,7 +32,7 @@ public class EquipmentSlotMixin {
      * EquipmentSlot(String name, int ordinal, Type type, int index, int filterFlag, String serializedName)
      */
     @Invoker("<init>")
-    private static EquipmentSlot invokeInit(String name, int ordinal, EquipmentSlot.Type type, int index, int filterFlag, String serializedName) {
+    static EquipmentSlot invokeInit(String name, int ordinal, EquipmentSlot.Type type, int index, int filterFlag, String serializedName) {
         throw new UnsupportedOperationException();
     }
 
