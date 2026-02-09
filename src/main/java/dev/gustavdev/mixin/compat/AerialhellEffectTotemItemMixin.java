@@ -1,77 +1,72 @@
 package dev.gustavdev.mixin.compat;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.gustavdev.util.AccessoryUtil;
-import dev.gustavdev.util.GameplayUtil;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Slice;
 
 /**
  * Mixin for Aerialhell's EffectTotemItem to support accessory slots.
  * 
  * This mixin modifies the inventoryTick method to also check for totems in accessory slots,
  * allowing Aerialhell's effect totems to work when equipped as accessories.
+ * 
+ * Note: AerialHell uses Yarn mappings, this project uses Mojang mappings.
+ * The mixin is set to remap=false and uses Yarn package names in @At targets.
  */
-@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem")
-public class AerialhellEffectTotemItemMixin {
+@Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem", remap = false)
+public abstract class AerialhellEffectTotemItemMixin {
 
     /**
-     * Wraps the condition check in inventoryTick to also check for the totem in accessory slots.
+     * Modifies the hand item check to also include accessories.
      * 
-     * Original condition checks:
+     * Original condition in EffectTotemItem:
      * livingEntityIn.getMainHandStack().getItem() == this || livingEntityIn.getOffHandStack().getItem() == this
      * 
-     * We intercept the second getItem() call and return 'this' if:
-     * 1. The off hand doesn't have the totem (original returns false), AND
-     * 2. The totem is found in an accessory slot
+     * We intercept the result of getOffHandStack() and replace it with the accessory totem if:
+     * 1. Neither main hand nor off hand has the totem, AND
+     * 2. An accessory slot has this specific totem
      * 
-     * This allows the totem effects to trigger when worn as an accessory.
+     * This makes the condition pass when the totem is in an accessory slot.
      */
-    @WrapOperation(
+    @ModifyExpressionValue(
         method = "inventoryTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;",
-            ordinal = 1
-        ),
-        slice = @Slice(
-            from = @At(
-                value = "INVOKE",
-                target = "Lnet/minecraft/world/entity/LivingEntity;getOffHandStack()Lnet/minecraft/world/item/ItemStack;"
-            )
+            target = "Lnet/minecraft/entity/LivingEntity;getOffHandStack()Lnet/minecraft/item/ItemStack;"
         )
     )
-    private Item checkAccessorySlot(ItemStack stack, Operation<Item> original, 
-                                    ItemStack totemStack, 
-                                    net.minecraft.server.world.ServerWorld world,
-                                    net.minecraft.world.entity.Entity entity) {
-        // Get the original result (the item in the off hand)
-        Item offHandItem = original.call(stack);
-        
-        // If off hand has the totem, return it
-        if (offHandItem == totemStack.getItem()) {
-            return offHandItem;
-        }
-        
-        // Otherwise check accessory slots
+    private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
+                                                  ItemStack totemStack,
+                                                  net.minecraft.server.world.ServerWorld world,
+                                                  Entity entity) {
+        // If entity is a LivingEntity, check accessories
         if (entity instanceof LivingEntity livingEntity) {
+            // First check if totem is already in main hand or off hand
+            if (livingEntity.getMainHandStack().getItem() == totemStack.getItem() || 
+                offHandStack.getItem() == totemStack.getItem()) {
+                // Already in hand, return original
+                return offHandStack;
+            }
+            
+            // Not in hands, check accessory slots for this specific totem
             ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
                 livingEntity,
-                GameplayUtil::isTotem
+                itemStack -> itemStack.getItem() == totemStack.getItem()
             );
             
-            // If we found a totem in accessories and it matches this totem, return 'this'
-            if (!accessoryTotem.isEmpty() && accessoryTotem.getItem() == totemStack.getItem()) {
-                return totemStack.getItem();
+            // If we found this totem in accessories, return it
+            // This makes the condition (... || getOffHandStack().getItem() == this) pass
+            if (!accessoryTotem.isEmpty()) {
+                return accessoryTotem;
             }
         }
         
-        // Otherwise return the off hand item (which won't match, so condition fails)
-        return offHandItem;
+        // Return the original off hand stack
+        return offHandStack;
     }
 }
+
