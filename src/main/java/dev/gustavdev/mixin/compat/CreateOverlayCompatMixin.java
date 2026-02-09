@@ -7,35 +7,35 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
  * Compatibility mixin for Create's goggle overlay rendering to support accessory slots.
  * 
- * IMPORTANT: This mixin affects Create's client-side overlay rendering.
- * It ensures that the goggle overlay appears when goggles are equipped in accessory slots.
+ * IMPORTANT: This mixin ONLY affects Create's client-side overlay rendering.
+ * It does not modify vanilla rendering or other mods' overlay implementations.
  * 
  * OPTIONAL MIXIN: This mixin is conditionally loaded via GustavdevMixinPlugin.
  * The plugin checks if Create is loaded using FabricLoader.getInstance().isModLoaded("create").
  * If Create is not installed at runtime, this mixin will not be loaded at all.
+ * The mod will continue to function normally without this mixin.
  * 
- * This mixin targets Create's overlay handler classes that render the goggle information.
- * These classes typically check if the player has goggles equipped before rendering overlays.
+ * This mixin enables Create's goggle overlay to render when goggles are in accessory slots:
+ * - HEAD slot: Overlay renders (original behavior)
+ * - Accessory slot: Overlay renders (added by this mixin)
  * 
- * @Pseudo annotation is used because the target class may not exist (Create is optional)
- * and because different Create versions/forks may have different class structures.
+ * Create's overlay renderer checks if the player has goggles equipped before rendering
+ * block information, stress/speed data, and other technical details. This mixin extends
+ * that check to include accessory slots.
  * 
  * Technical details:
- * - Targets Create's overlay/HUD classes
- * - Intercepts equipment checks for the HEAD slot
- * - Returns goggles from accessories if HEAD slot is empty
- * - Uses @Pseudo to allow compilation without Create present
+ * - Create may use different mappings, Loom handles remapping automatically
+ * - Loom automatically remaps @At targets from Mojang to intermediary at compile time
+ * - At runtime, both mods use intermediary names, ensuring compatibility
+ * - Only validated goggles items (via GameplayUtil.isGoggles) are returned from accessories
+ * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Pseudo
-@Mixin(targets = {
-    "com.simibubi.create.content.equipment.goggles.GoggleOverlayRenderer"
-}, remap = false)
+@Mixin(targets = "com.simibubi.create.content.equipment.goggles.GoggleOverlayRenderer")
 public abstract class CreateOverlayCompatMixin {
 
     /**
@@ -45,6 +45,7 @@ public abstract class CreateOverlayCompatMixin {
      * player.getItemBySlot(EquipmentSlot.HEAD)
      * 
      * We intercept this to also return goggles from accessory slots if HEAD is empty.
+     * This allows the overlay to render when goggles are in an accessory slot.
      */
     @ModifyExpressionValue(
         method = "*",
