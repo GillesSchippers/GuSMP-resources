@@ -43,6 +43,16 @@ public class GustavdevMixinPlugin implements IMixinConfigPlugin {
             return isLoaded;
         }
         
+        // Create compatibility mixin - only load if Create is present
+        if (mixinClassName.equals("dev.gustavdev.mixin.compat.CreateGogglesCompatMixin")) {
+            boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
+            if (!isLoaded) {
+                // Log that we're skipping this mixin (optional, for debugging)
+                System.out.println("[GustavdevMixinPlugin] Skipping CreateGogglesCompatMixin - create mod not loaded");
+            }
+            return isLoaded;
+        }
+        
         // All other mixins should be loaded normally
         return true;
     }

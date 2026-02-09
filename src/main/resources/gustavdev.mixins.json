@@ -9,7 +9,8 @@
     "InteractionHandMixin",
     "LivingEntityMixin",
     "compat.PlayerInventoryStorageImplMixin",
-    "compat.AerialhellEffectTotemItemMixin"
+    "compat.AerialhellEffectTotemItemMixin",
+    "compat.CreateGogglesCompatMixin"
   ],
   "mixinextras": {
 		"minVersion": "0.5.3"
