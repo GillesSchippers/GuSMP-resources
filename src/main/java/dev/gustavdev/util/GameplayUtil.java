@@ -27,7 +27,7 @@ public class GameplayUtil {
      * 
      * This ensures compatibility with:
      * - Vanilla totem of undying
-     * - Custom totems from Friends and Foes, Aerial Hell, etc.
+     * - Custom totems from Friends and Foes
      * - Any modded item with death protection component
      * 
      * @param stack The ItemStack to check

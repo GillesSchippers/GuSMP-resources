@@ -27,9 +27,8 @@ import org.spongepowered.asm.mixin.Mixin;
  * - Death protection: Vanilla's checkTotemDeathProtection() loops through InteractionHand.values()
  *   which includes FAKE_HAND, finds the totem, calls shrink(1) to consume it
  * 
- * Note: We do NOT override MAIN_HAND/OFF_HAND to avoid breaking other mods and vanilla
- * mechanics that need to see actual hand contents. Passive effects are handled via
- * mod-specific mixins (e.g., AerialHellEffectTotemMixin).
+ * Note: We do NOT override MAIN_HAND/OFF_HAND to preserve compatibility with other mods
+ * and vanilla mechanics that need to see actual hand contents.
  */
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
