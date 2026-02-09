@@ -34,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * - Only validated goggles items (via GameplayUtil.isGoggles) are returned from accessories
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Mixin(targets = "com.simibubi.create.content.equipment.goggles.GogglesItem")
+@Mixin(targets = "com.zurrtum.create.content.equipment.goggles.GogglesItem")
 public abstract class CreateGogglesCompatMixin {
 
     /**
