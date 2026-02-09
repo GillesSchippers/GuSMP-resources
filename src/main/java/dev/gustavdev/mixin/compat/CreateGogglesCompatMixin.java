@@ -3,14 +3,14 @@ package dev.gustavdev.mixin.compat;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.gustavdev.util.AccessoryUtil;
 import dev.gustavdev.util.GameplayUtil;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
- * Mixin for Create's GogglesItem to support accessory slots.
+ * Compatibility mixin for Create's GogglesItem to support accessory slots.
  * 
  * IMPORTANT: This mixin affects Create's GogglesItem class specifically.
  * It enables Create's goggles functionality (overlays, block information, etc.)
@@ -32,12 +32,13 @@ import org.spongepowered.asm.mixin.injection.At;
  * - Returns true if goggles are found in either location
  * 
  * Technical details:
- * - Create uses Architectury/Forge mappings, Loom handles remapping
- * - The target class is Create's GogglesItem or utility class
+ * - Create uses Architectury/Forge mappings, so remap = false
+ * - @Pseudo allows compilation without Create present
  * - Only validated goggles items (via GameplayUtil.isGoggles) are considered
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
-@Mixin(targets = "com.simibubi.create.content.equipment.goggles.GogglesItem")
+@Pseudo
+@Mixin(targets = "com.simibubi.create.content.equipment.goggles.GogglesItem", remap = false)
 public abstract class CreateGogglesCompatMixin {
 
     /**
