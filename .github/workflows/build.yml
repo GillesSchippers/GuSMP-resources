@@ -37,6 +37,12 @@ jobs:
           repository: GillesSchippers/owo-lib
           path: owo-lib
 
+      - name: checkout aerialhell
+        uses: actions/checkout@v4
+        with:
+          repository: GillesSchippers/AerialHell
+          path: aerialhell
+
       - name: setup jdk ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
@@ -45,7 +51,7 @@ jobs:
           cache: gradle
 
       # Caching Strategy:
-      # - Cache owo-lib and accessories builds based on their commit hashes
+      # - Cache owo-lib, accessories, and aerialhell builds based on their commit hashes
       # - When cache hits, skip expensive build/publish steps
       # - Caches both build outputs and Maven Local artifacts
       # - Gradle dependencies are cached by setup-java action above
@@ -58,6 +64,11 @@ jobs:
       - name: Get accessories commit hash
         id: accessories-commit
         working-directory: accessories
+        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Get aerialhell commit hash
+        id: aerialhell-commit
+        working-directory: aerialhell
         run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Cache owo-lib build
@@ -77,6 +88,15 @@ jobs:
             accessories/fabric/build
             ~/.m2/repository/io/wispforest/accessories-fabric
           key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
+
+      - name: Cache aerialhell build
+        id: cache-aerialhell
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            aerialhell/build
+            ~/.m2/repository/fr/factionbedrock/aerialhell
+          key: aerialhell-build-${{ runner.os }}-${{ steps.aerialhell-commit.outputs.hash }}
 
       - name: publish owo-lib to Maven Local
         if: steps.cache-owo-lib.outputs.cache-hit != 'true'
@@ -110,6 +130,22 @@ jobs:
             ~/.m2/repository/io/wispforest/accessories-fabric
           key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
 
+      - name: publish aerialhell to Maven Local
+        if: steps.cache-aerialhell.outputs.cache-hit != 'true'
+        working-directory: aerialhell
+        run: |
+          chmod +x gradlew
+          ./gradlew publishToMavenLocal --no-daemon
+
+      - name: Save aerialhell cache
+        if: steps.cache-aerialhell.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            aerialhell/build
+            ~/.m2/repository/fr/factionbedrock/aerialhell
+          key: aerialhell-build-${{ runner.os }}-${{ steps.aerialhell-commit.outputs.hash }}
+
       - name: build gustavdev
         working-directory: gustavdev
         run: |
@@ -129,6 +165,13 @@ jobs:
         with:
           name: accessories-artifacts
           path: accessories/fabric/build/libs/
+
+      - name: capture aerialhell artifacts
+        if: runner.os == 'Linux' && matrix.java == '21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: aerialhell-artifacts
+          path: aerialhell/build/libs/
 
       - name: capture gustavdev artifacts
         if: runner.os == 'Linux' && matrix.java == '21'
