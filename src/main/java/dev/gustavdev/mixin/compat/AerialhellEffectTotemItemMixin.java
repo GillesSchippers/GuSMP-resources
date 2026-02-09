@@ -16,9 +16,10 @@ import org.spongepowered.asm.mixin.injection.At;
  * IMPORTANT: This mixin ONLY affects AerialHell's totem items. It does not modify
  * vanilla totem behavior or other mods' totem implementations.
  * 
- * OPTIONAL MIXIN: This mixin targets an external mod class with remap=false.
- * If AerialHell is not installed at runtime, this mixin will gracefully skip
- * without errors. The mod will continue to function normally without this mixin.
+ * OPTIONAL MIXIN: This mixin is conditionally loaded via GustavdevMixinPlugin.
+ * The plugin checks if AerialHell is loaded using FabricLoader.getInstance().isModLoaded("aerialhell").
+ * If AerialHell is not installed at runtime, this mixin will not be loaded at all.
+ * The mod will continue to function normally without this mixin.
  * 
  * This mixin enables triple wielding of AerialHell totems:
  * - Main hand: TotemA (original behavior)
@@ -32,7 +33,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * - AerialHell uses Yarn mappings, this project uses Mojang mappings
  * - The mixin is set to remap=false and uses Yarn package names in @At targets
  * - Only validated totem items (via GameplayUtil.isTotem) are returned from accessories
- * - remap=false naturally makes this mixin optional when target class is missing
+ * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
 @Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem", remap = false)
 public abstract class AerialhellEffectTotemItemMixin {
