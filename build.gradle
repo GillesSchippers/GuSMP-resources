@@ -22,6 +22,11 @@ repositories {
 		url = "https://maven.wispforest.io"
 	}
 	
+	maven {
+		name = "JitPack"
+		url = "https://jitpack.io"
+	}
+	
 	mavenLocal()
 }
 
@@ -46,6 +51,11 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
+	
+	// MixinExtras - required for @ModifyExpressionValue and other advanced mixin features
+	implementation("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
+	annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
+	include("com.github.llamalad7.mixinextras:mixinextras-fabric:0.3.5")
 }
 
 processResources {
