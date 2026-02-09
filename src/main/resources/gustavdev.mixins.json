@@ -17,8 +17,5 @@
   },
   "overwrites": {
     "requireAnnotations": true
-  },
-  "overrides": {
-    "compat.AerialhellEffectTotemItemMixin.required": false
   }
 }
