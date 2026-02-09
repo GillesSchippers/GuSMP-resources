@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin;
+package dev.gustavdev.mixin.fake;
 
 import dev.gustavdev.util.FakeHeadHolder;
 import net.minecraft.world.entity.EquipmentSlot;
