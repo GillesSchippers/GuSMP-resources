@@ -21,5 +21,9 @@
 		"java": ">=21",
 		"fabric-api": "*",
 		"accessories": "*"
+	},
+	"suggests": {
+		"friendsandfoes": "*",
+		"aerialhell": "*"
 	}
 }
