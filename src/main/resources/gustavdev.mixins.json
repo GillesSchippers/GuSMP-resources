@@ -10,7 +10,9 @@
     "LivingEntityMixin",
     "compat.PlayerInventoryStorageImplMixin",
     "compat.AerialhellTotemCompatMixin",
-    "compat.CreateGogglesCompatMixin",
+    "compat.CreateGogglesCompatMixin"
+  ],
+  "client": [
     "compat.CreateOverlayCompatMixin"
   ],
   "mixinextras": {

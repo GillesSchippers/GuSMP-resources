@@ -12,6 +12,10 @@ import org.spongepowered.asm.mixin.injection.At;
 /**
  * Compatibility mixin for Create's goggle overlay rendering to support accessory slots.
  * 
+ * CLIENT-SIDE ONLY: This mixin targets Create's client-side overlay renderer.
+ * It is registered in the "client" array of gustavdev.mixins.json and will only
+ * load on the client, preventing ClassNotFoundException on dedicated servers.
+ * 
  * IMPORTANT: This mixin ONLY affects Create's client-side overlay rendering.
  * It does not modify vanilla rendering or other mods' overlay implementations.
  * 
