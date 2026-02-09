@@ -23,19 +23,19 @@ import org.spongepowered.asm.mixin.Mixin;
  * 1. When getItemInHand(FAKE_HAND) is called, return the totem from accessories
  *    → Enables death protection via vanilla's InteractionHand.values() loop
  * 
- * 2. When getItemInHand(MAIN_HAND/OFF_HAND) is called and hand is empty,
- *    also return the totem from accessories
- *    → Enables passive effects from mods that check hands directly
+ * 2. When getItemInHand(MAIN_HAND/OFF_HAND) is called, ALWAYS check for accessory totem
+ *    and return it if present, REGARDLESS of hand occupancy
+ *    → Enables passive effects even when holding other items (sword + shield)
  * 
- * 3. When setItemInHand(...) is called for any hand with an accessory totem, skip it
+ * 3. When setItemInHand(...) is called with an accessory totem present, skip it
  *    → Prevents vanilla from modifying hand slots when totem is in accessory
  * 
  * How it works:
  * - Death protection: Vanilla's checkTotemDeathProtection() loops through InteractionHand.values()
  *   which includes FAKE_HAND, finds the totem, calls shrink(1) to consume it
  * 
- * - Passive effects: Mods like Aerial Hell call getMainHandStack()/getOffHandStack()
- *   on tick, we return the accessory totem if hands are empty, effects are applied
+ * - Passive effects: Mods like Aerial Hell call getMainHandStack()/getOffHandStack() on tick.
+ *   We always return the accessory totem if present, so effects apply even when holding items.
  */
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -46,12 +46,16 @@ public abstract class LivingEntityMixin {
      * For FAKE_HAND:
      * - Makes the accessory totem "visible" to vanilla's death protection check
      * 
-     * For MAIN_HAND/OFF_HAND when empty:
-     * - Makes the accessory totem "visible" to mods checking hands for passive effects
-     * - Examples: Aerial Hell totems, Friends and Foes totems with passive abilities
+     * For MAIN_HAND/OFF_HAND:
+     * - ALWAYS returns accessory totem if present, regardless of hand occupancy
+     * - This allows passive effects (Aerial Hell) to work even when holding other items
+     * - Examples: Holding sword + shield while having totem in accessory slot
      * 
      * Returns the actual ItemStack reference (not a copy), so when vanilla calls
      * shrink(1) to consume the totem, it modifies the accessory slot directly.
+     * 
+     * NOTE: This means hand-held items won't be accessible while totem is in accessory.
+     * This is a trade-off to enable passive effects to work with occupied hands.
      */
     @WrapMethod(method = "getItemInHand")
     private ItemStack wrapGetItemInHand(InteractionHand hand, Operation<ItemStack> original) {
@@ -63,22 +67,19 @@ public abstract class LivingEntityMixin {
             );
         }
         
-        // Get the original stack from the hand
-        ItemStack handStack = original.call(hand);
-        
         // Handle MAIN_HAND and OFF_HAND (for passive effects)
-        // Only inject if the hand is empty - don't override actual held items
-        if (handStack.isEmpty()) {
-            ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
-                (LivingEntity) (Object) this,
-                GameplayUtil::isTotem
-            );
-            if (!accessoryTotem.isEmpty()) {
-                return accessoryTotem;
-            }
+        // Check for accessory totem REGARDLESS of hand occupancy
+        // This allows passive effects to work even when holding other items (sword + shield)
+        ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
+            (LivingEntity) (Object) this,
+            GameplayUtil::isTotem
+        );
+        if (!accessoryTotem.isEmpty()) {
+            return accessoryTotem;
         }
         
-        return handStack;
+        // If no accessory totem, return the original hand stack
+        return original.call(hand);
     }
 
     /**
@@ -97,26 +98,17 @@ public abstract class LivingEntityMixin {
             return;
         }
         
-        // For MAIN_HAND/OFF_HAND: check if we're serving an accessory totem
-        // If so, skip the set operation to prevent modifying the hand
+        // For MAIN_HAND/OFF_HAND: check if we have an accessory totem
+        // If we do, skip the set operation since we're always returning the totem
+        // and it's already been modified in the accessory slot
         LivingEntity entity = (LivingEntity) (Object) this;
+        ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(entity, GameplayUtil::isTotem);
         
-        // Get what's actually in the hand
-        ItemStack actualHandStack;
-        if (hand == InteractionHand.MAIN_HAND) {
-            actualHandStack = entity.getMainHandItem();
-        } else {
-            actualHandStack = entity.getOffhandItem();
-        }
-        
-        // If the hand is actually empty but we have an accessory totem, skip
-        if (actualHandStack.isEmpty()) {
-            ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(entity, GameplayUtil::isTotem);
-            if (!accessoryTotem.isEmpty()) {
-                // The totem is already modified in the accessory slot
-                // Don't let vanilla try to set the hand slot
-                return;
-            }
+        if (!accessoryTotem.isEmpty()) {
+            // We're returning the accessory totem for this hand
+            // The totem is already modified in the accessory slot
+            // Don't let vanilla try to set the hand slot
+            return;
         }
         
         // Otherwise, call the original method
