@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "dev.gustavdev.mixin.GustavdevMixinPlugin",
   "mixins": [
+    "EquipmentSlotMixin",
     "InteractionHandMixin",
     "LivingEntityMixin",
     "compat.PlayerInventoryStorageImplMixin",
