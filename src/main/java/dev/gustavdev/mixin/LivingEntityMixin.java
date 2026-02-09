@@ -67,19 +67,20 @@ public abstract class LivingEntityMixin {
             );
         }
         
-        // Handle MAIN_HAND and OFF_HAND (for passive effects)
-        // Check for accessory totem REGARDLESS of hand occupancy
-        // This allows passive effects to work even when holding other items (sword + shield)
+        // Early exit: If no accessory totem, use original logic
+        // This avoids unnecessary processing when player doesn't have a totem equipped
         ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(
             (LivingEntity) (Object) this,
             GameplayUtil::isTotem
         );
-        if (!accessoryTotem.isEmpty()) {
-            return accessoryTotem;
+        if (accessoryTotem.isEmpty()) {
+            return original.call(hand);
         }
         
-        // If no accessory totem, return the original hand stack
-        return original.call(hand);
+        // Handle MAIN_HAND and OFF_HAND (for passive effects)
+        // Return accessory totem REGARDLESS of hand occupancy
+        // This allows passive effects to work even when holding other items (sword + shield)
+        return accessoryTotem;
     }
 
     /**
@@ -98,20 +99,19 @@ public abstract class LivingEntityMixin {
             return;
         }
         
-        // For MAIN_HAND/OFF_HAND: check if we have an accessory totem
-        // If we do, skip the set operation since we're always returning the totem
-        // and it's already been modified in the accessory slot
+        // Early exit: If no accessory totem, use original logic
+        // This avoids unnecessary processing when player doesn't have a totem equipped
         LivingEntity entity = (LivingEntity) (Object) this;
         ItemStack accessoryTotem = AccessoryUtil.getAccessoryStack(entity, GameplayUtil::isTotem);
         
-        if (!accessoryTotem.isEmpty()) {
-            // We're returning the accessory totem for this hand
-            // The totem is already modified in the accessory slot
-            // Don't let vanilla try to set the hand slot
+        if (accessoryTotem.isEmpty()) {
+            original.call(hand, stack);
             return;
         }
         
-        // Otherwise, call the original method
-        original.call(hand, stack);
+        // For MAIN_HAND/OFF_HAND: we have an accessory totem
+        // Skip the set operation since we're always returning the totem
+        // and it's already been modified in the accessory slot
+        // (Don't call original - the totem is already consumed in accessory)
     }
 }
