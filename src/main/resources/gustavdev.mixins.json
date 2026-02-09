@@ -15,6 +15,9 @@
   "injectors": {
     "defaultRequire": 1
   },
+  "overwrites": {
+    "requireAnnotations": true
+  },
   "overrides": {
     "compat.AerialhellEffectTotemItemMixin.required": false
   }
