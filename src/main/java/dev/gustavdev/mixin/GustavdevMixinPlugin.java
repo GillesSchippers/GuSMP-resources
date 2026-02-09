@@ -34,21 +34,30 @@ public class GustavdevMixinPlugin implements IMixinConfigPlugin {
         // Check if the mixin should be applied based on mod presence
         
         // AerialHell compatibility mixin - only load if AerialHell is present
-        if (mixinClassName.equals("dev.gustavdev.mixin.compat.AerialhellTotemCompatMixin")) {
+        if (mixinClassName.equals("dev.gustavdev.mixin.AerialhellTotemCompatMixin")) {
             boolean isLoaded = FabricLoader.getInstance().isModLoaded("aerialhell");
             if (!isLoaded) {
-                System.out.println("[GustavdevMixinPlugin] Skipping AerialhellCompatMixin - aerialhell mod not loaded");
+                System.out.println("[GustavdevMixinPlugin] Skipping AerialhellTotemCompatMixin - aerialhell mod not loaded");
             }
             return isLoaded;
         }
         
-        // Create compatibility mixins - only load if Create is present
+        // Create Goggles compatibility mixin - only load if Create is present
         // NOTE: Create-Fly fork also registers as "create" in Fabric, so this check works for both
-        if (mixinClassName.equals("dev.gustavdev.mixin.compat.CreateGogglesCompatMixin") || 
-            mixinClassName.equals("dev.gustavdev.mixin.compat.CreateOverlayCompatMixin")) {
+        if (mixinClassName.equals("dev.gustavdev.mixin.CreateGogglesCompatMixin")) {
             boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
             if (!isLoaded) {
-                System.out.println("[GustavdevMixinPlugin] Skipping CreateCompatMixin - create mod not loaded");
+                System.out.println("[GustavdevMixinPlugin] Skipping CreateGogglesCompatMixin - create mod not loaded");
+            }
+            return isLoaded;
+        }
+        
+        // Create Overlay compatibility mixin - only load if Create is present
+        // NOTE: Create-Fly fork also registers as "create" in Fabric, so this check works for both
+        if (mixinClassName.equals("dev.gustavdev.mixin.CreateOverlayCompatMixin")) {
+            boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
+            if (!isLoaded) {
+                System.out.println("[GustavdevMixinPlugin] Skipping CreateOverlayCompatMixin - create mod not loaded");
             }
             return isLoaded;
         }
