@@ -46,6 +46,10 @@ public abstract class CreateOverlayCompatMixin {
      * 
      * We intercept this to also return goggles from accessory slots if HEAD is empty.
      * This allows the overlay to render when goggles are in an accessory slot.
+     * 
+     * Note: Using method = "*" is necessary because Create's overlay rendering may
+     * happen in multiple methods, and different Create versions/forks may structure
+     * the code differently. The slot parameter is captured from the getItemBySlot call.
      */
     @ModifyExpressionValue(
         method = "*",
