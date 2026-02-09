@@ -8,12 +8,12 @@
     "EquipmentSlotMixin",
     "InteractionHandMixin",
     "LivingEntityMixin",
-    "compat.PlayerInventoryStorageImplMixin",
-    "compat.AerialhellTotemCompatMixin",
-    "compat.CreateGogglesCompatMixin"
+    "PlayerInventoryStorageImplMixin",
+    "AerialhellTotemCompatMixin",
+    "CreateGogglesCompatMixin"
   ],
   "client": [
-	  "compat.CreateOverlayCompatMixin"
+    "CreateOverlayCompatMixin"
   ],
   "mixinextras": {
 		"minVersion": "0.5.3"

@@ -16,7 +16,7 @@ import java.util.Arrays;
  * This fake head is used to check for goggles in accessory slots
  * without requiring external mod dependencies.
  */
-@Mixin(EquipmentSlot.class)
+@Mixin(value = EquipmentSlot.class, priority = 2000)
 public class EquipmentSlotMixin {
 
     @Shadow @Final @Mutable private static EquipmentSlot[] $VALUES;
