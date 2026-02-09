@@ -62,7 +62,9 @@ public abstract class AerialhellEffectTotemItemMixin {
     private ItemStack checkAccessorySlotForTotem(ItemStack offHandStack, 
                                                   ItemStack inventoryStack,
                                                   net.minecraft.server.level.ServerLevel world,
-                                                  Entity entity) {
+                                                  Entity entity,
+                                                  int slotId,
+                                                  boolean isSelected) {
         // Only process for LivingEntity
         if (entity instanceof LivingEntity livingEntity) {
             // Check if this specific totem is already in main hand or off hand
