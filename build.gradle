@@ -22,6 +22,33 @@ repositories {
 		url = "https://maven.wispforest.io"
 	}
 	
+	// REI (Roughly Enough Items) - Shedaniel's Maven
+	maven {
+		name = "Shedaniel"
+		url = "https://maven.shedaniel.me/"
+	}
+	
+	// JEI (Just Enough Items) - Jared's Maven
+	maven {
+		name = "Jared"
+		url = "https://maven.blamejared.com/"
+	}
+	
+	// Modrinth Maven - Alternative source for many mods
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
+	
+	// CurseMaven - Alternative source for CurseForge mods
+	maven {
+		name = "CurseMaven"
+		url = "https://cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+	
 	mavenLocal()
 }
 
