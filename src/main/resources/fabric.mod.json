@@ -10,7 +10,9 @@
 	"icon": "gustavdev.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [],
+		"main": [
+			"dev.gustavdev.GustavdevMod"
+		],
 		"client": []
 	},
 	"mixins": [
@@ -26,6 +28,7 @@
 	"suggests": {
 		"friendsandfoes": "*",
 		"aerialhell": "*",
-		"create": "*"
+		"create": "*",
+		"chunky": "*"
 	}
 }

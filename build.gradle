@@ -66,6 +66,9 @@ dependencies {
 	//modImplementation "maven.modrinth:accessories:${project.accessories_version}"
 	modImplementation "maven.modrinth:aerial-hell:${project.aerialhell_version}"
 	modImplementation "maven.modrinth:create-fly:${project.create_version}"
+	
+	// Chunky for world pregeneration
+	modImplementation "maven.modrinth:chunky:${project.chunky_version}"
 }
 
 processResources {
