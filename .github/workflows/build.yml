@@ -121,4 +121,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gustavdev-artifacts
-          path: **/build/libs/
+          path: "**/build/libs/"
