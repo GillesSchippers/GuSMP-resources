@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin.compat;
+package dev.gustavdev.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.gustavdev.util.FakeHandHolder;
@@ -12,6 +12,11 @@ import java.util.Arrays;
 /**
  * Mixin to prevent Fabric API's PlayerInventoryStorage from trying to use FAKE_HAND.
  * This prevents crashes and unexpected behavior when Fabric API iterates through hands.
+ * 
+ * The Fabric Transfer API's PlayerInventoryStorageImpl wraps player inventory for item transfer operations.
+ * It iterates through inventory slots including hands. We need to filter out our fake hand
+ * to prevent Fabric API from trying to access it, which would cause errors since it's not backed by
+ * an actual inventory slot.
  */
 @Mixin(targets = "net/fabricmc/fabric/impl/transfer/item/PlayerInventoryStorageImpl")
 public class PlayerInventoryStorageImplMixin {

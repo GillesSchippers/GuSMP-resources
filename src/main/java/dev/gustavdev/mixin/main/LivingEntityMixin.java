@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Mixin;
  * Implementation based on Accessorify mod by pajicadvance:
  * https://github.com/pajicadvance/accessorify
  * 
- * The approach:
+ * The approach for FAKE_HAND:
  * 1. When getItemInHand(FAKE_HAND) is called, return the totem from accessories
  *    → Enables death protection via vanilla's InteractionHand.values() loop
  * 
@@ -27,8 +27,8 @@ import org.spongepowered.asm.mixin.Mixin;
  * - Death protection: Vanilla's checkTotemDeathProtection() loops through InteractionHand.values()
  *   which includes FAKE_HAND, finds the totem, calls shrink(1) to consume it
  * 
- * Note: We do NOT override MAIN_HAND/OFF_HAND to preserve compatibility with other mods
- * and vanilla mechanics that need to see actual hand contents.
+ * Note: We do NOT override MAIN_HAND/OFF_HAND to preserve compatibility with other mods 
+ * and vanilla mechanics.
  */
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {

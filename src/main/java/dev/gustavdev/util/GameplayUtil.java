@@ -18,6 +18,11 @@ public class GameplayUtil {
         Identifier.fromNamespaceAndPath("accessories", "totem")
     );
 
+    private static final TagKey<Item> GOGGLES_TAG = TagKey.create(
+        BuiltInRegistries.ITEM.key(),
+        Identifier.fromNamespaceAndPath("accessories", "goggles")
+    );
+
     /**
      * Checks if the given ItemStack is a totem.
      * 
@@ -40,5 +45,24 @@ public class GameplayUtil {
         // Check both the tag and the DEATH_PROTECTION component
         // This matches Accessorify 1.21.10+ behavior
         return stack.is(TOTEM_TAG) || stack.has(DataComponents.DEATH_PROTECTION);
+    }
+
+    /**
+     * Checks if the given ItemStack is goggles.
+     * 
+     * Checks the accessories:goggles tag for configured goggles items.
+     * 
+     * This ensures compatibility with:
+     * - Create mod goggles
+     * - Any other modded goggles added to the tag
+     * 
+     * @param stack The ItemStack to check
+     * @return true if the stack is goggles, false otherwise
+     */
+    public static boolean isGoggles(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+        return stack.is(GOGGLES_TAG);
     }
 }

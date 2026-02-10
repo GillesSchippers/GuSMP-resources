@@ -7,9 +7,11 @@
   "mixins": [
     "InteractionHandMixin",
     "LivingEntityMixin",
-    "compat.PlayerInventoryStorageImplMixin",
-    "compat.AerialhellEffectTotemItemMixin"
+    "PlayerInventoryStorageImplMixin",
+    "AerialhellTotemCompatMixin",
+    "CreateGogglesCompatMixin"
   ],
+  "client": [],
   "mixinextras": {
 		"minVersion": "0.5.3"
 	},

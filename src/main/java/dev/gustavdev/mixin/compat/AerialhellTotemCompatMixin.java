@@ -1,4 +1,4 @@
-package dev.gustavdev.mixin.compat;
+package dev.gustavdev.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.gustavdev.util.AccessoryUtil;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
- * Mixin for AerialHell's EffectTotemItem to support accessory slots.
+ * Compatibility mixin for AerialHell's totem items to support accessory slots.
  * 
  * IMPORTANT: This mixin ONLY affects AerialHell's totem items. It does not modify
  * vanilla totem behavior or other mods' totem implementations.
@@ -39,7 +39,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * - Conditional loading is handled by GustavdevMixinPlugin.shouldApplyMixin()
  */
 @Mixin(targets = "fr.factionbedrock.aerialhell.Item.EffectTotemItem")
-public abstract class AerialhellEffectTotemItemMixin {
+public abstract class AerialhellTotemCompatMixin {
 
     /**
      * Modifies the hand item check to also include accessories.

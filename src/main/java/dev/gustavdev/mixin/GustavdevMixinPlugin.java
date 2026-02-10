@@ -34,14 +34,24 @@ public class GustavdevMixinPlugin implements IMixinConfigPlugin {
         // Check if the mixin should be applied based on mod presence
         
         // AerialHell compatibility mixin - only load if AerialHell is present
-        if (mixinClassName.equals("dev.gustavdev.mixin.compat.AerialhellEffectTotemItemMixin")) {
+        if (mixinClassName.equals("dev.gustavdev.mixin.AerialhellTotemCompatMixin")) {
             boolean isLoaded = FabricLoader.getInstance().isModLoaded("aerialhell");
             if (!isLoaded) {
-                // Log that we're skipping this mixin (optional, for debugging)
-                System.out.println("[GustavdevMixinPlugin] Skipping AerialhellEffectTotemItemMixin - aerialhell mod not loaded");
+                System.out.println("[GustavdevMixinPlugin] Skipping AerialhellTotemCompatMixin - aerialhell mod not loaded");
             }
             return isLoaded;
         }
+        
+        // Create Goggles compatibility mixin - only load if Create is present
+        // NOTE: Create-Fly fork also registers as "create" in Fabric, so this check works for both
+        if (mixinClassName.equals("dev.gustavdev.mixin.CreateGogglesCompatMixin")) {
+            boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
+            if (!isLoaded) {
+                System.out.println("[GustavdevMixinPlugin] Skipping CreateGogglesCompatMixin - create mod not loaded");
+            }
+            return isLoaded;
+        }
+        
         
         // All other mixins should be loaded normally
         return true;

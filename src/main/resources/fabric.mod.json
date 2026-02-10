@@ -7,6 +7,7 @@
 	"authors": [
 		"GustavoSchip"
 	],
+	"icon": "gustavdev.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [],
@@ -24,6 +25,7 @@
 	},
 	"suggests": {
 		"friendsandfoes": "*",
-		"aerialhell": "*"
+		"aerialhell": "*",
+		"create": "*"
 	}
 }
