@@ -27,18 +27,18 @@ jobs:
 
     steps:
       - name: checkout gustavdev
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: gustavdev
 
       - name: checkout accessories
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: GillesSchippers/accessories
           path: accessories
 
       - name: checkout owo-lib
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: GillesSchippers/owo-lib
           path: owo-lib
