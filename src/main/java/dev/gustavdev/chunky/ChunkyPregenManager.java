@@ -129,14 +129,22 @@ public class ChunkyPregenManager {
                 // Mark startup delay as passed
                 hasStartupDelayPassed = true;
                 
+                // Use local copy to avoid null pointer in case server stops
+                final MinecraftServer localServer = server;
+                
                 // Check if we should start pregeneration (no players online)
-                if (server != null && server.getPlayerCount() == 0) {
-                    server.execute(() -> {
-                        GustavdevMod.LOGGER.info("Startup delay completed - no players online, starting pregeneration");
-                        resumePregeneration();
+                if (localServer != null) {
+                    localServer.execute(() -> {
+                        // Double-check server is still running and no players are online
+                        if (server != null && server.getPlayerCount() == 0) {
+                            GustavdevMod.LOGGER.info("Startup delay completed - no players online, starting pregeneration");
+                            resumePregeneration();
+                        } else if (server != null) {
+                            GustavdevMod.LOGGER.info("Startup delay completed - players online, pregeneration will start when they leave");
+                        }
                     });
                 } else {
-                    GustavdevMod.LOGGER.info("Startup delay completed - players online, pregeneration will start when they leave");
+                    GustavdevMod.LOGGER.info("Startup delay completed - server already stopped");
                 }
                 
             } catch (InterruptedException e) {
