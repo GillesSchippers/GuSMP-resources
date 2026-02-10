@@ -37,12 +37,12 @@ public class ChunkyPregenManager {
         ServerLifecycleEvents.SERVER_STOPPING.register(ChunkyPregenManager::onServerStopping);
         
         // Register player connection events
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            onPlayerJoin(server);
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, joiningServer) -> {
+            onPlayerJoin(joiningServer);
         });
         
-        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            onPlayerDisconnect(server);
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, disconnectingServer) -> {
+            onPlayerDisconnect(disconnectingServer);
         });
         
         isInitialized = true;
@@ -86,7 +86,7 @@ public class ChunkyPregenManager {
      * Called when a player joins the server.
      * Pauses pregeneration if it's running.
      */
-    private static void onPlayerJoin(MinecraftServer server) {
+    private static void onPlayerJoin(MinecraftServer joiningServer) {
         if (!isReady()) {
             return;
         }
@@ -99,16 +99,16 @@ public class ChunkyPregenManager {
      * Called when a player disconnects from the server.
      * Starts/resumes pregeneration if no players are online.
      */
-    private static void onPlayerDisconnect(MinecraftServer server) {
+    private static void onPlayerDisconnect(MinecraftServer disconnectingServer) {
         if (!isReady()) {
             return;
         }
         
         // Schedule check for next tick to ensure player count is fully updated
         // This prevents race conditions where another player joins immediately
-        server.execute(() -> {
+        disconnectingServer.execute(() -> {
             // Double-check after player has fully disconnected
-            if (server.getPlayerCount() == 0) {
+            if (server != null && server.getPlayerCount() == 0) {
                 GustavdevMod.LOGGER.info("No players online - resuming pregeneration");
                 resumePregeneration();
             }
@@ -136,10 +136,11 @@ public class ChunkyPregenManager {
                 if (localServer != null) {
                     localServer.execute(() -> {
                         // Double-check server is still running and no players are online
-                        if (server != null && server.getPlayerCount() == 0) {
+                        // Use localServer to avoid race condition with onServerStopping
+                        if (localServer.getPlayerCount() == 0) {
                             GustavdevMod.LOGGER.info("Startup delay completed - no players online, starting pregeneration");
                             resumePregeneration();
-                        } else if (server != null) {
+                        } else {
                             GustavdevMod.LOGGER.info("Startup delay completed - players online, pregeneration will start when they leave");
                         }
                     });
