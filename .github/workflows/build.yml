@@ -116,23 +116,9 @@ jobs:
           chmod +x gradlew
           ./gradlew build --no-daemon
 
-      - name: capture owo-lib artifacts
-        if: runner.os == 'Linux' && matrix.java == '21'
-        uses: actions/upload-artifact@v4
-        with:
-          name: owo-lib-artifacts
-          path: owo-lib/build/libs/
-
-      - name: capture accessories artifacts
-        if: runner.os == 'Linux' && matrix.java == '21'
-        uses: actions/upload-artifact@v4
-        with:
-          name: accessories-artifacts
-          path: accessories/fabric/build/libs/
-
       - name: capture gustavdev artifacts
         if: runner.os == 'Linux' && matrix.java == '21'
         uses: actions/upload-artifact@v4
         with:
           name: gustavdev-artifacts
-          path: gustavdev/build/libs/
+          path: **/build/libs/
