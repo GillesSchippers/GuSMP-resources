@@ -4,26 +4,29 @@
 # against bad commits.
 
 name: build
-on: [pull_request, push, workflow_dispatch]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-22.04
-
-    strategy:
-      matrix:
-        java: [21]
-        os: [ubuntu-22.04]
-
+    outputs:
+      owo-lib-hash: ${{ steps.owo-lib-commit.outputs.hash }}
+      accessories-hash: ${{ steps.accessories-commit.outputs.hash }}
     steps:
-      - name: checkout gustavdev
+      - name: checkout owo-lib
         uses: actions/checkout@v4
         with:
-          path: gustavdev
+          repository: GillesSchippers/owo-lib
+          path: owo-lib
 
       - name: checkout accessories
         uses: actions/checkout@v4
@@ -31,6 +34,23 @@ jobs:
           repository: GillesSchippers/accessories
           path: accessories
 
+      - name: Get owo-lib commit hash
+        id: owo-lib-commit
+        working-directory: owo-lib
+        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Get accessories commit hash
+        id: accessories-commit
+        working-directory: accessories
+        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+  build-owo-lib:
+    runs-on: ubuntu-22.04
+    needs: setup
+    strategy:
+      matrix:
+        java: [21]
+    steps:
       - name: checkout owo-lib
         uses: actions/checkout@v4
         with:
@@ -44,22 +64,6 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: gradle
 
-      # Caching Strategy:
-      # - Cache owo-lib, accessories, and aerialhell builds based on their commit hashes
-      # - When cache hits, skip expensive build/publish steps
-      # - Caches both build outputs and Maven Local artifacts
-      # - Gradle dependencies are cached by setup-java action above
-      
-      - name: Get owo-lib commit hash
-        id: owo-lib-commit
-        working-directory: owo-lib
-        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Get accessories commit hash
-        id: accessories-commit
-        working-directory: accessories
-        run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-
       - name: Cache owo-lib build
         id: cache-owo-lib
         uses: actions/cache/restore@v4
@@ -67,16 +71,7 @@ jobs:
           path: |
             owo-lib/build
             ~/.m2/repository/io/wispforest/owo-lib
-          key: owo-lib-build-${{ runner.os }}-${{ steps.owo-lib-commit.outputs.hash }}
-
-      - name: Cache accessories build
-        id: cache-accessories
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            accessories/fabric/build
-            ~/.m2/repository/io/wispforest/accessories-fabric
-          key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
+          key: owo-lib-build-${{ runner.os }}-${{ needs.setup.outputs.owo-lib-hash }}
 
       - name: publish owo-lib to Maven Local
         if: steps.cache-owo-lib.outputs.cache-hit != 'true'
@@ -92,7 +87,51 @@ jobs:
           path: |
             owo-lib/build
             ~/.m2/repository/io/wispforest/owo-lib
-          key: owo-lib-build-${{ runner.os }}-${{ steps.owo-lib-commit.outputs.hash }}
+          key: owo-lib-build-${{ runner.os }}-${{ needs.setup.outputs.owo-lib-hash }}
+
+      - name: Upload owo-lib artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: owo-lib-build
+          path: |
+            owo-lib/build/libs/
+            ~/.m2/repository/io/wispforest/owo-lib
+          retention-days: 1
+
+  build-accessories:
+    runs-on: ubuntu-22.04
+    needs: [setup, build-owo-lib]
+    strategy:
+      matrix:
+        java: [21]
+    steps:
+      - name: checkout accessories
+        uses: actions/checkout@v4
+        with:
+          repository: GillesSchippers/accessories
+          path: accessories
+
+      - name: setup jdk ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: gradle
+
+      - name: Download owo-lib artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: owo-lib-build
+          path: ~/.m2/repository/io/wispforest/owo-lib
+
+      - name: Cache accessories build
+        id: cache-accessories
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            accessories/fabric/build
+            ~/.m2/repository/io/wispforest/accessories-fabric
+          key: accessories-build-${{ runner.os }}-${{ needs.setup.outputs.accessories-hash }}
 
       - name: publish accessories to Maven Local
         if: steps.cache-accessories.outputs.cache-hit != 'true'
@@ -108,7 +147,48 @@ jobs:
           path: |
             accessories/fabric/build
             ~/.m2/repository/io/wispforest/accessories-fabric
-          key: accessories-build-${{ runner.os }}-${{ steps.accessories-commit.outputs.hash }}
+          key: accessories-build-${{ runner.os }}-${{ needs.setup.outputs.accessories-hash }}
+
+      - name: Upload accessories artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessories-build
+          path: |
+            accessories/fabric/build/libs/
+            ~/.m2/repository/io/wispforest/accessories-fabric
+          retention-days: 1
+
+  build-gustavdev:
+    runs-on: ubuntu-22.04
+    needs: [build-owo-lib, build-accessories]
+    strategy:
+      matrix:
+        java: [21]
+        os: [ubuntu-22.04]
+    steps:
+      - name: checkout gustavdev
+        uses: actions/checkout@v4
+        with:
+          path: gustavdev
+
+      - name: setup jdk ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: gradle
+
+      - name: Download owo-lib artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: owo-lib-build
+          path: ~/.m2/repository/io/wispforest/owo-lib
+
+      - name: Download accessories artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: accessories-build
+          path: ~/.m2/repository/io/wispforest/accessories-fabric
 
       - name: build gustavdev
         working-directory: gustavdev
@@ -116,9 +196,67 @@ jobs:
           chmod +x gradlew
           ./gradlew build --no-daemon
 
-      - name: capture gustavdev artifacts
-        if: runner.os == 'Linux' && matrix.java == '21'
+      - name: Upload gustavdev artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: gustavdev-artifacts
-          path: "**/build/libs/"
+          name: gustavdev-build-java-${{ matrix.java }}
+          path: gustavdev/build/libs/
+          retention-days: 7
+
+  collect-artifacts:
+    runs-on: ubuntu-22.04
+    needs: [build-gustavdev]
+    if: always() && needs.build-gustavdev.result == 'success'
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '*-build*'
+          path: artifacts
+          merge-multiple: false
+
+      - name: Create combined artifact archive
+        run: |
+          mkdir -p combined-artifacts/gustavdev
+          mkdir -p combined-artifacts/dependencies/owo-lib
+          mkdir -p combined-artifacts/dependencies/accessories
+          
+          # Copy gustavdev artifacts
+          if [ -d "artifacts/gustavdev-build-java-21" ]; then
+            cp -r artifacts/gustavdev-build-java-21/* combined-artifacts/gustavdev/ || true
+          fi
+          
+          # Copy dependency artifacts
+          if [ -d "artifacts/owo-lib-build" ]; then
+            cp -r artifacts/owo-lib-build/owo-lib/build/libs/* combined-artifacts/dependencies/owo-lib/ 2>/dev/null || true
+          fi
+          
+          if [ -d "artifacts/accessories-build" ]; then
+            cp -r artifacts/accessories-build/accessories/fabric/build/libs/* combined-artifacts/dependencies/accessories/ 2>/dev/null || true
+          fi
+
+      - name: Upload combined artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-build-artifacts
+          path: combined-artifacts/
+          retention-days: 30
+
+      - name: Generate artifact summary
+        run: |
+          echo "## Build Artifacts Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### GustavDev" >> $GITHUB_STEP_SUMMARY
+          find combined-artifacts/gustavdev -type f -name "*.jar" -exec basename {} \; | while read jar; do
+            echo "- \`$jar\`" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Dependencies" >> $GITHUB_STEP_SUMMARY
+          echo "#### owo-lib" >> $GITHUB_STEP_SUMMARY
+          find combined-artifacts/dependencies/owo-lib -type f -name "*.jar" -exec basename {} \; 2>/dev/null | while read jar; do
+            echo "- \`$jar\`" >> $GITHUB_STEP_SUMMARY
+          done || echo "- No artifacts found" >> $GITHUB_STEP_SUMMARY
+          echo "#### accessories" >> $GITHUB_STEP_SUMMARY
+          find combined-artifacts/dependencies/accessories -type f -name "*.jar" -exec basename {} \; 2>/dev/null | while read jar; do
+            echo "- \`$jar\`" >> $GITHUB_STEP_SUMMARY
+          done || echo "- No artifacts found" >> $GITHUB_STEP_SUMMARY
