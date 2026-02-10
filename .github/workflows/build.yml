@@ -4,7 +4,13 @@
 # against bad commits.
 
 name: build
-on: [pull_request, push, workflow_dispatch]
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches: 
+    - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
