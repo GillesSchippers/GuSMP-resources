@@ -8,15 +8,36 @@ version: 2
 updates:
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
+    target-branch: "dev"
     schedule:
       interval: "weekly"
+    assignees:
+      - "GillesSchippers"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: "gradle" # See documentation for possible values
     directory: "/" # Location of package manifests
+    target-branch: "dev"
     schedule:
       interval: "weekly"
+    assignees:
+      - "GillesSchippers"
+    groups:
+      gradle:
+        patterns:
+          - "*"
 
   - package-ecosystem: "maven" # See documentation for possible values
     directory: "/" # Location of package manifests
+    target-branch: "dev"
     schedule:
       interval: "weekly"
+    assignees:
+      - "GillesSchippers"
+    groups:
+      maven:
+        patterns:
+          - "*"
