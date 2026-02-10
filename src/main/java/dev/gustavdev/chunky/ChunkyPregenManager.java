@@ -23,7 +23,7 @@ public class ChunkyPregenManager {
     private static MinecraftServer server;
     private static ChunkyAPI chunkyAPI;
     private static boolean isInitialized = false;
-    private static boolean hasStartupDelayPassed = false;
+    private static volatile boolean hasStartupDelayPassed = false;
     
     /**
      * Initialize the Chunky pregeneration manager.
@@ -104,8 +104,10 @@ public class ChunkyPregenManager {
             return;
         }
         
-        // Use a small delay to ensure player count is updated
+        // Schedule check for next tick to ensure player count is fully updated
+        // This prevents race conditions where another player joins immediately
         server.execute(() -> {
+            // Double-check after player has fully disconnected
             if (server.getPlayerCount() == 0) {
                 GustavdevMod.LOGGER.info("No players online - resuming pregeneration");
                 resumePregeneration();
