@@ -8,6 +8,7 @@ on:
   pull_request:
   push:
     branches:
+      - main
       - master
   workflow_dispatch:
 
@@ -89,13 +90,18 @@ jobs:
             ~/.m2/repository/io/wispforest/owo-lib
           key: owo-lib-build-${{ runner.os }}-${{ needs.setup.outputs.owo-lib-hash }}
 
-      - name: Upload owo-lib artifacts
+      - name: Upload owo-lib Maven artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: owo-lib-maven
+          path: ~/.m2/repository/io/wispforest/owo-lib
+          retention-days: 1
+
+      - name: Upload owo-lib build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: owo-lib-build
-          path: |
-            owo-lib/build/libs/
-            ~/.m2/repository/io/wispforest/owo-lib
+          path: owo-lib/build/libs/
           retention-days: 1
 
   build-accessories:
@@ -118,10 +124,10 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: gradle
 
-      - name: Download owo-lib artifacts
+      - name: Download owo-lib Maven artifacts
         uses: actions/download-artifact@v4
         with:
-          name: owo-lib-build
+          name: owo-lib-maven
           path: ~/.m2/repository/io/wispforest/owo-lib
 
       - name: Cache accessories build
@@ -149,13 +155,18 @@ jobs:
             ~/.m2/repository/io/wispforest/accessories-fabric
           key: accessories-build-${{ runner.os }}-${{ needs.setup.outputs.accessories-hash }}
 
-      - name: Upload accessories artifacts
+      - name: Upload accessories Maven artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessories-maven
+          path: ~/.m2/repository/io/wispforest/accessories-fabric
+          retention-days: 1
+
+      - name: Upload accessories build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: accessories-build
-          path: |
-            accessories/fabric/build/libs/
-            ~/.m2/repository/io/wispforest/accessories-fabric
+          path: accessories/fabric/build/libs/
           retention-days: 1
 
   build-gustavdev:
@@ -178,17 +189,26 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: gradle
 
-      - name: Download owo-lib artifacts
+      - name: Download owo-lib Maven artifacts
         uses: actions/download-artifact@v4
         with:
-          name: owo-lib-build
+          name: owo-lib-maven
           path: ~/.m2/repository/io/wispforest/owo-lib
 
-      - name: Download accessories artifacts
+      - name: Download accessories Maven artifacts
         uses: actions/download-artifact@v4
         with:
-          name: accessories-build
+          name: accessories-maven
           path: ~/.m2/repository/io/wispforest/accessories-fabric
+
+      - name: Verify Maven Local contents
+        run: |
+          echo "Maven Local contents:"
+          ls -la ~/.m2/repository/io/wispforest/ || echo "Directory not found"
+          echo "owo-lib:"
+          find ~/.m2/repository/io/wispforest/owo-lib -type f 2>/dev/null || echo "Not found"
+          echo "accessories-fabric:"
+          find ~/.m2/repository/io/wispforest/accessories-fabric -type f 2>/dev/null || echo "Not found"
 
       - name: build gustavdev
         working-directory: gustavdev
@@ -208,10 +228,10 @@ jobs:
     needs: [build-gustavdev]
     if: always() && needs.build-gustavdev.result == 'success'
     steps:
-      - name: Download all artifacts
+      - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: '*-build*'
+          pattern: '*-build'
           path: artifacts
           merge-multiple: false
 
@@ -228,11 +248,11 @@ jobs:
           
           # Copy dependency artifacts
           if [ -d "artifacts/owo-lib-build" ]; then
-            cp -r artifacts/owo-lib-build/owo-lib/build/libs/* combined-artifacts/dependencies/owo-lib/ 2>/dev/null || true
+            cp -r artifacts/owo-lib-build/* combined-artifacts/dependencies/owo-lib/ 2>/dev/null || true
           fi
           
           if [ -d "artifacts/accessories-build" ]; then
-            cp -r artifacts/accessories-build/accessories/fabric/build/libs/* combined-artifacts/dependencies/accessories/ 2>/dev/null || true
+            cp -r artifacts/accessories-build/* combined-artifacts/dependencies/accessories/ 2>/dev/null || true
           fi
 
       - name: Upload combined artifacts
@@ -247,9 +267,9 @@ jobs:
           echo "## Build Artifacts Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### GustavDev" >> $GITHUB_STEP_SUMMARY
-          find combined-artifacts/gustavdev -type f -name "*.jar" -exec basename {} \; | while read jar; do
+          find combined-artifacts/gustavdev -type f -name "*.jar" -exec basename {} \; 2>/dev/null | while read jar; do
             echo "- \`$jar\`" >> $GITHUB_STEP_SUMMARY
-          done
+          done || echo "- No artifacts found" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Dependencies" >> $GITHUB_STEP_SUMMARY
           echo "#### owo-lib" >> $GITHUB_STEP_SUMMARY
