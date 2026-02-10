@@ -124,7 +124,7 @@ public class ChunkyPregenManager {
         GustavdevMod.LOGGER.info("Scheduling startup delay of {} seconds before enabling auto-pregeneration", 
             STARTUP_DELAY_SECONDS);
         
-        Thread delayThread = new Thread(() -> {
+        Thread startupDelayThread = new Thread(() -> {
             try {
                 TimeUnit.SECONDS.sleep(STARTUP_DELAY_SECONDS);
                 
@@ -156,8 +156,8 @@ public class ChunkyPregenManager {
             }
         }, "ChunkyStartupDelay");
         
-        delayThread.setDaemon(true);
-        delayThread.start();
+        startupDelayThread.setDaemon(true);
+        startupDelayThread.start();
     }
     
     /**

@@ -10,7 +10,7 @@ This feature automatically manages world pregeneration using the Chunky mod. It 
 ## How It Works
 
 ### Automatic Task Management
-1. **Server Startup**: After a 60-second delay (to prevent startup lag), the manager checks if players are online
+1. **Server Startup**: After a 60-second delay (to prevent startup lag), the manager checks if players are online. If no players are online, pregeneration starts automatically.
 2. **No Players Online**: Automatically resumes/continues any configured Chunky pregeneration tasks
 3. **Player Joins**: Immediately pauses all pregeneration tasks to ensure smooth gameplay
 4. **Player Leaves**: When the last player disconnects, pregeneration automatically resumes
