@@ -29,15 +29,3 @@ updates:
       gradle:
         patterns:
           - "*"
-
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    target-branch: "dev"
-    schedule:
-      interval: "weekly"
-    assignees:
-      - "GillesSchippers"
-    groups:
-      maven:
-        patterns:
-          - "*"
