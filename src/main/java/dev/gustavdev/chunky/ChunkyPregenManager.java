@@ -20,9 +20,9 @@ import java.util.concurrent.TimeUnit;
 public class ChunkyPregenManager {
     private static final long STARTUP_DELAY_SECONDS = 60; // 1 minute delay after server start
     
-    private static MinecraftServer server;
+    private static volatile MinecraftServer server;
     private static ChunkyAPI chunkyAPI;
-    private static boolean isInitialized = false;
+    private static volatile boolean isInitialized = false;
     private static volatile boolean hasStartupDelayPassed = false;
     
     /**
@@ -107,8 +107,10 @@ public class ChunkyPregenManager {
         // Schedule check for next tick to ensure player count is fully updated
         // This prevents race conditions where another player joins immediately
         disconnectingServer.execute(() -> {
+            // Use local copy to avoid race condition with onServerStopping
+            final MinecraftServer localServer = server;
             // Double-check after player has fully disconnected
-            if (server != null && server.getPlayerCount() == 0) {
+            if (localServer != null && localServer.getPlayerCount() == 0) {
                 GustavdevMod.LOGGER.info("No players online - resuming pregeneration");
                 resumePregeneration();
             }
