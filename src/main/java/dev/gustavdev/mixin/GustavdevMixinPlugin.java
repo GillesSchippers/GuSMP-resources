@@ -52,15 +52,6 @@ public class GustavdevMixinPlugin implements IMixinConfigPlugin {
             return isLoaded;
         }
         
-        // Create Overlay compatibility mixin - only load if Create is present
-        // NOTE: Create-Fly fork also registers as "create" in Fabric, so this check works for both
-        if (mixinClassName.equals("dev.gustavdev.mixin.CreateOverlayCompatMixin")) {
-            boolean isLoaded = FabricLoader.getInstance().isModLoaded("create");
-            if (!isLoaded) {
-                System.out.println("[GustavdevMixinPlugin] Skipping CreateOverlayCompatMixin - create mod not loaded");
-            }
-            return isLoaded;
-        }
         
         // All other mixins should be loaded normally
         return true;
