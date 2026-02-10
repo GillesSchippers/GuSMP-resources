@@ -7,7 +7,7 @@
 	"authors": [
 		"GustavoSchip"
 	],
-	"icon": "assets/gustavdev/icon.png",
+	"icon": "gustavdev.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [],
