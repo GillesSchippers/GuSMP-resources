@@ -16,15 +16,21 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 
 	maven {
 		name = "Wispforest"
 		url = "https://maven.wispforest.io"
-	}
-	
-	maven {
-		name = "Modrinth"
-		url = "https://api.modrinth.com/maven"
 	}
 	
 	mavenLocal()
@@ -52,6 +58,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
+	modImplementation "fr.factionbedrock.aerialhell:aerialhell:${project.aerialhell_version}"
+	modImplementation "maven.modrinth:aerial-hell:${project.aerialhell_version}"
+	modImplementation "maven.modrinth:create-fly:${project.create_version}"
 }
 
 processResources {
