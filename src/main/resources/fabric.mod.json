@@ -3,7 +3,7 @@
 	"id": "gustavdev",
 	"version": "${version}",
 	"name": "GuSMP resources",
-	"description": "Made by GustavoSchip",
+	"description": "All resources required for the GuSMP server.",
 	"authors": [
 		"GustavoSchip"
 	],
