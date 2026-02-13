@@ -1,5 +1,6 @@
 {
     "values": [
-        "gustavdev:app/setup"
+        "gustavdev:no_creeper_grief/setup",
+        "gustavdev:terralith/setup"
     ]
 }

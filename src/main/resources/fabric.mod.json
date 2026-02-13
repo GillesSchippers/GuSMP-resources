@@ -26,6 +26,9 @@
 	"suggests": {
 		"friendsandfoes": "*",
 		"aerialhell": "*",
-		"create": "*"
+		"create": "*",
+		"terralith": "*",
+		"puffish_skills": "*",
+		"puffish_attributes": "*"
 	}
 }
