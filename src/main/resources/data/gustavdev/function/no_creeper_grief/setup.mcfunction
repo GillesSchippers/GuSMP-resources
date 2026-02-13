@@ -1,0 +1,1 @@
+schedule function gustavdev:no_creeper_grief/execute 1s

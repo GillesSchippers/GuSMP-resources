@@ -27,6 +27,8 @@
 		"friendsandfoes": "*",
 		"aerialhell": "*",
 		"create": "*",
-		"terralith": "*"
+		"terralith": "*",
+		"puffish_skills": "*",
+		"puffish_attributes": "*"
 	}
 }
