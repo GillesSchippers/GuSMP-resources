@@ -49,12 +49,6 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
           cache: gradle
-
-      # Caching Strategy:
-      # - Cache owo-lib, accessories, and aerialhell builds based on their commit hashes
-      # - When cache hits, skip expensive build/publish steps
-      # - Caches both build outputs and Maven Local artifacts
-      # - Gradle dependencies are cached by setup-java action above
       
       - name: Get owo-lib commit hash
         id: owo-lib-commit
@@ -127,4 +121,4 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: gustavdev-artifacts
-          path: "**/build/libs/"
+          path: "gustavdev/build/libs/"
