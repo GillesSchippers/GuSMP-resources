@@ -1,0 +1,49 @@
+{
+    "name": "Hulking",
+	"description": "It's easy to see you approaching. Not so easy to outrun you.",
+	"type": "origins:multiple",
+	"prscale_attributes": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"name": "Hulking max health multiplier",
+				"attribute": "minecraft:max_health",
+				"operation": "multiply_total",
+				"value": 0.2
+			},
+			{
+				"name": "Hulking knockback resistance",
+				"attribute": "minecraft:knockback_resistance",
+				"operation": "addition",
+				"value": 0.35
+			},
+			{
+				"name": "Hulking movespeed multiplier",
+				"attribute": "minecraft:movement_speed",
+				"operation": "multiply_total",
+				"value": 0.12
+			},
+			{
+				"name": "Hulking block reach",
+				"attribute": "minecraft:block_interaction_range",
+				"operation": "multiply_base",
+				"value": 0.15
+			},
+			{
+				"name": "Hulking entity reach",
+				"attribute": "minecraft:entity_interaction_range",
+				"operation": "multiply_base",
+				"value": 0.15
+			}
+		]
+	},
+	"prscale_jumpmod": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"name": "Hulking jump bonus",
+			"operation": "addition",
+			"value": 0.1
+		}
+	},
+    "hidden": false
+}

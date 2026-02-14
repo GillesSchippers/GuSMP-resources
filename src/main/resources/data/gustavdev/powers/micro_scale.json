@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You could slip beneath a slab.",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Micro scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": -0.6875
+		}
+	],
+    "hidden": false
+}

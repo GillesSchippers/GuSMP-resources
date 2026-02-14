@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You're small enough to sneak into a crawlspace.",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Small scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": -0.34
+		}
+	],
+    "hidden": false
+}

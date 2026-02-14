@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You're a fair bit too tall to fit through a typical doorway without ducking.",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Big scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": 0.25
+		}
+	],
+    "hidden": false
+}

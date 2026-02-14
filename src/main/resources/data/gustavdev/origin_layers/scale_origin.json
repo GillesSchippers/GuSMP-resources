@@ -1,0 +1,16 @@
+{
+	"name": "size",
+	"replace": false,
+	"order": 86,
+	"enabled": true,
+	"auto_choose": true,
+	"origins": [
+		"gustavdev:normal",
+		"gustavdev:small",
+		"gustavdev:verysmall",
+		"gustavdev:big",
+		"gustavdev:verybig",
+		"gustavdev:micro",
+		"gustavdev:giant"
+	]
+}

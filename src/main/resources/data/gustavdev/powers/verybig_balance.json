@@ -1,0 +1,55 @@
+{
+    "name": "Towering",
+	"description": "Striding across the land with ease, sweeping away foes.",
+	"type": "origins:multiple",
+	"prscale_attributes": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"name": "Towering max health multiplier",
+				"attribute": "minecraft:max_health",
+				"operation": "multiply_total",
+				"value": 0.4
+			},
+			{
+				"name": "Towering knockback resistance",
+				"attribute": "minecraft:knockback_resistance",
+				"operation": "addition",
+				"value": 0.60
+			},
+			{
+				"name": "Towering movespeed multiplier",
+				"attribute": "minecraft:movement_speed",
+				"operation": "multiply_total",
+				"value": 0.25
+			},
+			{
+				"name": "Towering step height",
+				"attribute": "minecraft:step_height",
+				"operation": "multiply_base",
+				"value": 1.0
+			},
+			{
+				"name": "Towering block reach",
+				"attribute": "minecraft:block_interaction_range",
+				"operation": "multiply_base",
+				"value": 0.25
+			},
+			{
+				"name": "Towering entity reach",
+				"attribute": "minecraft:entity_interaction_range",
+				"operation": "multiply_base",
+				"value": 0.25
+			}
+		]
+	},
+	"prscale_jumpmod": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"name": "Towering jump bonus",
+			"operation": "addition",
+			"value": 0.16
+		}
+	},
+    "hidden": false
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:dialog_list",
+  "title": {
+    "text": "Under construction",
+    "color": "red"
+  },
+  "external_title": "GuSMP Resources",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "Future updates will provide options here.",
+      "color": "yellow",
+      "italic": true
+    }
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "exit_action": {
+    "label": "Back"
+  },
+  "dialogs": []
+}
