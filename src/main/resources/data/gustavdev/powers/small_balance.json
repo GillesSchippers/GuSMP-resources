@@ -1,6 +1,6 @@
 {
     "name": "Diminutive",
-	"description": "Your smaller size reduces your health, knockback resistance, speed, reach, and jump height.",
+	"description": "You're fragile and easily pushed around with limited reach.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

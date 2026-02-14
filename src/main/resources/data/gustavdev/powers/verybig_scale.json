@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You stand 50% taller than normal. You'll need much bigger doors and open spaces.",
+	"description": "You're going to want a bigger door...",
 	"type": "origins:attribute",
 	"modifiers": [
 		{

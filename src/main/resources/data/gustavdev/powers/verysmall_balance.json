@@ -1,6 +1,6 @@
 {
     "name": "Minuscule",
-	"description": "Your much smaller size greatly reduces your health, knockback resistance, speed, step height, reach, and jump height.",
+	"description": "Very fragile with severely limited reach and mobility.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

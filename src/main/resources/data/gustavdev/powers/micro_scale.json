@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You stand 69% shorter than normal. You can slip under slabs and into the tiniest spaces.",
+	"description": "You could slip beneath a slab.",
 	"type": "origins:attribute",
 	"modifiers": [
 		{

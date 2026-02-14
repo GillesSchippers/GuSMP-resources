@@ -1,6 +1,6 @@
 {
     "name": "Microscopic",
-	"description": "Your tiny size massively reduces your health, knockback resistance, speed, step height, reach, and jump height.",
+	"description": "One of the smallest humanoids to ever exist. Extremely fragile and limited.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",
