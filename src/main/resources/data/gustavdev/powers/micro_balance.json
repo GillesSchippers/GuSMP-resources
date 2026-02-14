@@ -1,0 +1,55 @@
+{
+    "name": "Microscopic",
+	"description": "One of the smallest humanoids to ever exist. Extremely fragile and limited.",
+	"type": "origins:multiple",
+	"prscale_attributes": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"name": "Microscopic max health multiplier",
+				"attribute": "minecraft:max_health",
+				"operation": "multiply_total",
+				"value": -0.6
+			},
+			{
+				"name": "Microscopic knockback resistance",
+				"attribute": "minecraft:knockback_resistance",
+				"operation": "addition",
+				"value": -0.80
+			},
+			{
+				"name": "Microscopic movespeed multiplier",
+				"attribute": "minecraft:movement_speed",
+				"operation": "multiply_total",
+				"value": -0.4
+			},
+			{
+				"name": "Microscopic step height",
+				"attribute": "minecraft:step_height",
+				"operation": "multiply_base",
+				"value": -1.0
+			},
+			{
+				"name": "Microscopic block reach",
+				"attribute": "minecraft:block_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.4
+			},
+			{
+				"name": "Microscopic entity reach",
+				"attribute": "minecraft:entity_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.4
+			}
+		]
+	},
+	"prscale_jumpmod": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"name": "Microscopic jump penalty",
+			"operation": "addition",
+			"value": -0.22
+		}
+	},
+    "hidden": false
+}

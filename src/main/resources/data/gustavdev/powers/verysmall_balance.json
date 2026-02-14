@@ -1,0 +1,55 @@
+{
+    "name": "Minuscule",
+	"description": "Tiny and swift, but very fragile with limited reach.",
+	"type": "origins:multiple",
+	"prscale_attributes": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"name": "Minuscule max health multiplier",
+				"attribute": "minecraft:max_health",
+				"operation": "multiply_total",
+				"value": -0.4
+			},
+			{
+				"name": "Minuscule knockback resistance",
+				"attribute": "minecraft:knockback_resistance",
+				"operation": "addition",
+				"value": -0.60
+			},
+			{
+				"name": "Minuscule movespeed multiplier",
+				"attribute": "minecraft:movement_speed",
+				"operation": "multiply_total",
+				"value": -0.25
+			},
+			{
+				"name": "Minuscule step height",
+				"attribute": "minecraft:step_height",
+				"operation": "multiply_base",
+				"value": -1.0
+			},
+			{
+				"name": "Minuscule block reach",
+				"attribute": "minecraft:block_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.25
+			},
+			{
+				"name": "Minuscule entity reach",
+				"attribute": "minecraft:entity_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.25
+			}
+		]
+	},
+	"prscale_jumpmod": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"name": "Minuscule jump penalty",
+			"operation": "addition",
+			"value": -0.16
+		}
+	},
+    "hidden": false
+}
