@@ -27,7 +27,7 @@
 				"name": "Microscopic step height",
 				"attribute": "minecraft:step_height",
 				"operation": "multiply_base",
-				"value": -1.0
+				"value": -0.5
 			},
 			{
 				"name": "Microscopic block reach",
