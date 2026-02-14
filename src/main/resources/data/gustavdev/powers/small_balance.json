@@ -1,6 +1,6 @@
 {
     "name": "Diminutive",
-	"description": "You're small and nimble, but fragile and easily pushed around.",
+	"description": "You're fragile and easily pushed around with limited reach.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

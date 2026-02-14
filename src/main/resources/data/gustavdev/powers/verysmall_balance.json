@@ -1,6 +1,6 @@
 {
     "name": "Minuscule",
-	"description": "Tiny and swift, but very fragile with limited reach.",
+	"description": "Very fragile with severely limited reach and mobility.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",
