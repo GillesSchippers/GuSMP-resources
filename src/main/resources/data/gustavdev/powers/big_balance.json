@@ -7,19 +7,19 @@
 		"modifiers": [
 			{
 				"name": "Hulking max health multiplier",
-				"attribute": "minecraft:generic.max_health",
+				"attribute": "minecraft:max_health",
 				"operation": "multiply_total",
 				"value": 0.2
 			},
 			{
 				"name": "Hulking knockback resistance",
-				"attribute": "minecraft:generic.knockback_resistance",
+				"attribute": "minecraft:knockback_resistance",
 				"operation": "addition",
 				"value": 0.35
 			},
 			{
 				"name": "Hulking movespeed multiplier",
-				"attribute": "minecraft:generic.movement_speed",
+				"attribute": "minecraft:movement_speed",
 				"operation": "multiply_total",
 				"value": 0.12
 			},

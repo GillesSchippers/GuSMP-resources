@@ -7,19 +7,19 @@
 		"modifiers": [
 			{
 				"name": "Towering max health multiplier",
-				"attribute": "minecraft:generic.max_health",
+				"attribute": "minecraft:max_health",
 				"operation": "multiply_total",
 				"value": 0.4
 			},
 			{
 				"name": "Towering knockback resistance",
-				"attribute": "minecraft:generic.knockback_resistance",
+				"attribute": "minecraft:knockback_resistance",
 				"operation": "addition",
 				"value": 0.60
 			},
 			{
 				"name": "Towering movespeed multiplier",
-				"attribute": "minecraft:generic.movement_speed",
+				"attribute": "minecraft:movement_speed",
 				"operation": "multiply_total",
 				"value": 0.25
 			},

@@ -7,19 +7,19 @@
 		"modifiers": [
 			{
 				"name": "Vast max health multiplier",
-				"attribute": "minecraft:generic.max_health",
+				"attribute": "minecraft:max_health",
 				"operation": "multiply_total",
 				"value": 0.6
 			},
 			{
 				"name": "Vast knockback resistance",
-				"attribute": "minecraft:generic.knockback_resistance",
+				"attribute": "minecraft:knockback_resistance",
 				"operation": "addition",
 				"value": 0.80
 			},
 			{
 				"name": "Vast movespeed multiplier",
-				"attribute": "minecraft:generic.movement_speed",
+				"attribute": "minecraft:movement_speed",
 				"operation": "multiply_total",
 				"value": 0.4
 			},
