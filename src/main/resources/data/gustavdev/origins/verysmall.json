@@ -2,8 +2,7 @@
 	"name": "Very Small",
 	"description": "§oAw, look, a little buddy!§r",
     "powers": [
-		"gustavdev:verysmall_scale",
-		"gustavdev:verysmall_balance"
+		"gustavdev:verysmall_scale"
     ],
     "icon": {
         "item": "minecraft:dandelion"

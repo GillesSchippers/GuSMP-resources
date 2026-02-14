@@ -2,8 +2,7 @@
 	"name": "Tiny",
 	"description": "§oDid I step on something?§r",
     "powers": [
-		"gustavdev:micro_scale",
-		"gustavdev:micro_balance"
+		"gustavdev:micro_scale"
     ],
     "icon": {
         "item": "minecraft:red_mushroom"
