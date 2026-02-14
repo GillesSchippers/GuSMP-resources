@@ -1,6 +1,6 @@
 {
     "name": "Hulking",
-	"description": "It's easy to see you approaching. Not so easy to outrun you.",
+	"description": "Your larger size grants you increased health, knockback resistance, speed, reach, and jump height.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

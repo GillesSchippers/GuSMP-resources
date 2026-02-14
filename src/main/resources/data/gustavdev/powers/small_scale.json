@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You're small enough to sneak into a crawlspace.",
+	"description": "You stand 34% shorter than normal. You can fit through tight spaces and crawlspaces.",
 	"type": "origins:attribute",
 	"modifiers": [
 		{

@@ -1,6 +1,6 @@
 {
     "name": "Vast",
-	"description": "One of the largest humanoids to ever exist. Mythical strength and speed.",
+	"description": "Your enormous size grants you massive increases to health, knockback resistance, speed, step height, reach, and jump height.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

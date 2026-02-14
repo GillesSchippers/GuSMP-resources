@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You might fit in a barn.",
+	"description": "You are twice as tall as normal. Most structures are too small for you - you'll need a barn.",
 	"type": "origins:attribute",
 	"modifiers": [
 		{

@@ -1,6 +1,6 @@
 {
     "name": "Towering",
-	"description": "Striding across the land with ease, sweeping away foes.",
+	"description": "Your much larger size grants you greatly increased health, knockback resistance, speed, step height, reach, and jump height.",
 	"type": "origins:multiple",
 	"prscale_attributes": {
 		"type": "origins:attribute",

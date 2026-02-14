@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You'd fit in a backpack. Watch out for birds of prey.",
+	"description": "You stand 50% shorter than normal. You can fit in very small spaces. Watch out for predators!",
 	"type": "origins:attribute",
 	"modifiers": [
 		{

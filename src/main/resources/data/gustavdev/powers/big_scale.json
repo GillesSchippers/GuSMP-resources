@@ -1,6 +1,6 @@
 {
     "name": "Height",
-	"description": "You're a fair bit too tall to fit through a typical doorway without ducking.",
+	"description": "You stand 25% taller than normal. You'll need to duck through most doorways.",
 	"type": "origins:attribute",
 	"modifiers": [
 		{
