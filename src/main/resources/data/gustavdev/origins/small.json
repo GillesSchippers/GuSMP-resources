@@ -2,8 +2,7 @@
 	"name": "Small",
 	"description": "§oGet small or get gone!§r",
     "powers": [
-		"gustavdev:small_scale",
-		"gustavdev:small_balance"
+		"gustavdev:small_scale"
     ],
     "icon": {
         "item": "minecraft:poppy"
