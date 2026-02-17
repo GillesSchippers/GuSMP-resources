@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You'd fit in a backpack. Watch out for birds of prey.",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Very Small scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": -0.5
+		}
+	],
+    "hidden": false
+}

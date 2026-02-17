@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You're going to want a bigger door...",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Very Big scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": 0.5
+		}
+	],
+    "hidden": false
+}

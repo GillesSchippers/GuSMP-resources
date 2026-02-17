@@ -29,6 +29,7 @@
 		"create": "*",
 		"terralith": "*",
 		"puffish_skills": "*",
-		"puffish_attributes": "*"
+		"puffish_attributes": "*",
+		"origins": "*"
 	}
 }

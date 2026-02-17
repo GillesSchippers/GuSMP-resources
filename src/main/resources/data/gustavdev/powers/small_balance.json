@@ -1,0 +1,49 @@
+{
+    "name": "Diminutive",
+	"description": "You're fragile and easily pushed around with limited reach.",
+	"type": "origins:multiple",
+	"prscale_attributes": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"name": "Diminutive max health multiplier",
+				"attribute": "minecraft:max_health",
+				"operation": "multiply_total",
+				"value": -0.2
+			},
+			{
+				"name": "Diminutive knockback resistance",
+				"attribute": "minecraft:knockback_resistance",
+				"operation": "addition",
+				"value": -0.35
+			},
+			{
+				"name": "Diminutive movespeed multiplier",
+				"attribute": "minecraft:movement_speed",
+				"operation": "multiply_total",
+				"value": -0.12
+			},
+			{
+				"name": "Diminutive block reach",
+				"attribute": "minecraft:block_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.15
+			},
+			{
+				"name": "Diminutive entity reach",
+				"attribute": "minecraft:entity_interaction_range",
+				"operation": "multiply_base",
+				"value": -0.15
+			}
+		]
+	},
+	"prscale_jumpmod": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"name": "Diminutive jump penalty",
+			"operation": "addition",
+			"value": -0.1
+		}
+	},
+    "hidden": false
+}

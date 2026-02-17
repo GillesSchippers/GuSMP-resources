@@ -1,0 +1,14 @@
+{
+    "name": "Height",
+	"description": "You might fit in a barn.",
+	"type": "origins:attribute",
+	"modifiers": [
+		{
+			"name": "Giant scale",
+			"attribute": "minecraft:scale",
+			"operation": "multiply_base",
+			"value": 1.0
+		}
+	],
+    "hidden": false
+}
