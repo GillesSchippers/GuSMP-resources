@@ -24,10 +24,11 @@
 		"accessories": "*"
 	},
 	"suggests": {
+		"create": "*",
+		"farmersdelight": "*",
+		"terralith": "*",
 		"friendsandfoes": "*",
 		"aerialhell": "*",
-		"create": "*",
-		"terralith": "*",
 		"puffish_skills": "*",
 		"puffish_attributes": "*",
 		"origins": "*"
