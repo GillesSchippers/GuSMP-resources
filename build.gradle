@@ -24,6 +24,11 @@ repositories {
 	}
 
 	mavenLocal()
+
+	maven {
+		name = "JitPack"
+		url = "https://jitpack.io"
+	}
 	
 	// TEMP
 	maven {
