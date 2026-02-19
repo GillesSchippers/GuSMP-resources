@@ -23,14 +23,21 @@ repositories {
 		}
 	}
 
-	mavenLocal()
-	
+	// TEMP
+	maven {
+		name = "JitPack"
+		url = "https://jitpack.io"
+	}
+	// TEMP
+
 	// TEMP
 	maven {
 		name = "Wispforest"
 		url = "https://maven.wispforest.io"
 	}
 	// TEMP
+
+	mavenLocal()
 }
 
 loom {
