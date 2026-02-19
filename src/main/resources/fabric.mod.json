@@ -23,11 +23,14 @@
 		"fabric-api": ">=0.141.3",
 		"accessories": "*"
 	},
-	"suggests": {
-		"friendsandfoes": "*",
-		"aerialhell": "*",
+	"recommends": {
 		"create": "*",
+		"aerialhell": "*"
+	},
+	"suggests": {
+		"farmersdelight": "*",
 		"terralith": "*",
+		"friendsandfoes": "*",
 		"puffish_skills": "*",
 		"puffish_attributes": "*",
 		"origins": "*"
