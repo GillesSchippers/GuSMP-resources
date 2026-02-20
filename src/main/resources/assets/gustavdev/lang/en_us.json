@@ -10,5 +10,16 @@
   "accessories.slot.accessories_cosmetics.feet": "Feet",
 
   "accessories.slot.accessories_cosmetics.animal_body": "Body",
-  "accessories.slot.accessories_cosmetics.saddle": "Saddle"
+  "accessories.slot.accessories_cosmetics.saddle": "Saddle",
+
+  "rarity.vibrant": "Vibrant",
+  "rarity.frozen": "Frozen",
+  "rarity.corrupted": "Corrupted",
+
+  "rarity.common": "Common",
+  "rarity.uncommon": "Uncommon",
+  "rarity.rare": "Rare",
+  "rarity.epic": "Epic",
+  "rarity.legendary": "Legendary",
+  "rarity.mythical": "Mythical"
 }
