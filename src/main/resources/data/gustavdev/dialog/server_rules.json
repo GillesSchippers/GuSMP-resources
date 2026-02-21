@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:notice_dialog",
+  "title": {
+    "text": "Server Rules",
+    "bold": true,
+    "color": "red"
+  },
+  "external_title": "Server Rules",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": [
+      {"text": "Please read and follow these rules:\n\n"},
+      {"text": "1. ", "bold": true, "color": "gold"},
+      {"text": "No griefing other players' builds.\n"},
+      {"text": "2. ", "bold": true, "color": "gold"},
+      {"text": "Treat every player with respect.\n"},
+      {"text": "3. ", "bold": true, "color": "gold"},
+      {"text": "No cheating, hacking or exploiting bugs.\n"},
+      {"text": "4. ", "bold": true, "color": "gold"},
+      {"text": "Ask before taking from shared storage.\n"},
+      {"text": "5. ", "bold": true, "color": "gold"},
+      {"text": "Keep chat friendly and appropriate.\n"},
+      {"text": "6. ", "bold": true, "color": "gold"},
+      {"text": "Do not kill other players without consent.\n\n"},
+      {"text": "Breaking these rules may result in a ban.", "color": "red", "italic": true}
+    ]
+  },
+  "can_close_with_escape": true,
+  "action": {
+    "label": "I Understand"
+  }
+}

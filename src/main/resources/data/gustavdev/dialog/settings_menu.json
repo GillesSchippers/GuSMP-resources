@@ -1,22 +1,28 @@
 {
   "type": "minecraft:dialog_list",
   "title": {
-    "text": "Under construction",
-    "color": "red"
+    "text": "GuSMP Resources",
+    "bold": true,
+    "color": "gold"
   },
   "external_title": "GuSMP Resources",
   "body": {
     "type": "minecraft:plain_message",
     "contents": {
-      "text": "Future updates will provide options here.",
-      "color": "yellow",
-      "italic": true
+      "text": "Welcome to the GuSMP server! Select a category below.",
+      "color": "white"
     }
   },
   "inputs": [],
   "can_close_with_escape": true,
   "exit_action": {
-    "label": "Back"
+    "label": "Close"
   },
-  "dialogs": []
+  "dialogs": [
+    "gustavdev:server_info",
+    "gustavdev:server_rules",
+    "gustavdev:mod_guide",
+    "gustavdev:origins_guide",
+    "gustavdev:skills_guide"
+  ]
 }

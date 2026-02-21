@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:multi_action_dialog",
+  "title": {
+    "text": "Mod Guide",
+    "bold": true,
+    "color": "green"
+  },
+  "external_title": "Mod Guide",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "Click a button to open the mod's wiki or page in your browser.",
+      "color": "gray",
+      "italic": true
+    }
+  },
+  "can_close_with_escape": true,
+  "exit_action": {
+    "label": "Back"
+  },
+  "actions": [
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Create", "color": "gold"},
+      "url": "https://create.fandom.com/wiki/Create_Mod_Wiki"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Farmer's Delight", "color": "green"},
+      "url": "https://modrinth.com/mod/farmers-delight-fabric"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Accessories", "color": "aqua"},
+      "url": "https://modrinth.com/mod/accessories"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Origins", "color": "light_purple"},
+      "url": "https://origins.readthedocs.io/"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Puffish Skills", "color": "yellow"},
+      "url": "https://modrinth.com/mod/puffish-skills"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Terralith", "color": "dark_green"},
+      "url": "https://modrinth.com/mod/terralith"
+    },
+    {
+      "type": "minecraft:open_url",
+      "label": {"text": "Aerial Hell", "color": "dark_red"},
+      "url": "https://modrinth.com/mod/aerial-hell"
+    }
+  ]
+}

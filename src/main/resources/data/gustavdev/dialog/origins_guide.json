@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:simple_dialog",
+  "title": {
+    "text": "Origins & Scale",
+    "bold": true,
+    "color": "light_purple"
+  },
+  "external_title": "Origins & Scale",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": [
+      {"text": "Your size affects reach, hitbox, and movement speed.\n\n", "color": "white"},
+      {"text": "Available sizes:\n", "bold": true, "color": "yellow"},
+      {"text": "  Micro", "color": "aqua"},
+      {"text": " (×0.31)  —  "},
+      {"text": "You could slip beneath a slab.\n", "color": "gray", "italic": true},
+      {"text": "  Very Small", "color": "aqua"},
+      {"text": " (×0.50)  —  "},
+      {"text": "You'd fit in a backpack.\n", "color": "gray", "italic": true},
+      {"text": "  Small", "color": "aqua"},
+      {"text": " (×0.66)  —  "},
+      {"text": "Small enough for a crawlspace.\n", "color": "gray", "italic": true},
+      {"text": "  Normal", "color": "white"},
+      {"text": " (×1.00)  —  "},
+      {"text": "Standard player size.\n", "color": "gray", "italic": true},
+      {"text": "  Big", "color": "gold"},
+      {"text": " (×1.25)  —  "},
+      {"text": "Too tall for a typical doorway.\n", "color": "gray", "italic": true},
+      {"text": "  Very Big", "color": "gold"},
+      {"text": " (×1.50)  —  "},
+      {"text": "Going to want a bigger door.\n", "color": "gray", "italic": true},
+      {"text": "  Giant", "color": "gold"},
+      {"text": " (×2.00)  —  "},
+      {"text": "You might fit in a barn.\n\n", "color": "gray", "italic": true},
+      {"text": "Select a size and click Apply to change your scale.", "color": "yellow"}
+    ]
+  },
+  "inputs": [
+    {
+      "type": "minecraft:single_option_input",
+      "id": "scale",
+      "label": {"text": "Size"},
+      "options": [
+        {"id": "micro",     "display": {"text": "Micro (×0.31)"}},
+        {"id": "verysmall", "display": {"text": "Very Small (×0.50)"}},
+        {"id": "small",     "display": {"text": "Small (×0.66)"}},
+        {"id": "normal",    "display": {"text": "Normal (×1.00)"}},
+        {"id": "big",       "display": {"text": "Big (×1.25)"}},
+        {"id": "verybig",   "display": {"text": "Very Big (×1.50)"}},
+        {"id": "giant",     "display": {"text": "Giant (×2.00)"}}
+      ],
+      "initial": "normal"
+    }
+  ],
+  "submit_action": {
+    "type": "minecraft:run_command",
+    "label": {"text": "Apply Scale", "bold": true},
+    "command": "/origin set @s gustavdev:scale_origin gustavdev:$(scale)"
+  },
+  "can_close_with_escape": true,
+  "exit_action": {
+    "label": "Back"
+  }
+}

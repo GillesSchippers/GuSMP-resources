@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:notice_dialog",
+  "title": {
+    "text": "Server Information",
+    "bold": true,
+    "color": "aqua"
+  },
+  "external_title": "Server Info",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": [
+      {"text": "GuSMP\n", "bold": true, "color": "gold"},
+      {"text": "A modded survival multiplayer server.\n\n"},
+      {"text": "Key Mods\n", "bold": true, "color": "yellow"},
+      {"text": "  Create", "color": "gold"},
+      {"text": " — Automation & machinery\n"},
+      {"text": "  Farmer's Delight", "color": "green"},
+      {"text": " — Food & cooking\n"},
+      {"text": "  Accessories", "color": "aqua"},
+      {"text": " — Custom equipment slots\n"},
+      {"text": "  Origins", "color": "light_purple"},
+      {"text": " — Size-based gameplay\n"},
+      {"text": "  Puffish Skills", "color": "yellow"},
+      {"text": " — Skill tree progression\n"},
+      {"text": "  Terralith", "color": "dark_green"},
+      {"text": " — Enhanced terrain generation\n"},
+      {"text": "  Aerial Hell", "color": "red"},
+      {"text": " — New dimension & challenges\n"}
+    ]
+  },
+  "can_close_with_escape": true,
+  "action": {
+    "label": "Close"
+  }
+}

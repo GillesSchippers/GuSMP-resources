@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:notice_dialog",
+  "title": {
+    "text": "Skills System",
+    "bold": true,
+    "color": "yellow"
+  },
+  "external_title": "Skills Guide",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": [
+      {"text": "GuSMP uses ", "color": "white"},
+      {"text": "Puffish Skills", "color": "yellow", "bold": true},
+      {"text": " — a skill tree system where you\nearn experience and unlock permanent perks.\n\n"},
+      {"text": "Skill Trees\n", "bold": true, "color": "aqua"},
+      {"text": "  Class", "color": "light_purple", "bold": true},
+      {"text": " — Combat & role-based abilities.\n"},
+      {"text": "    (", "color": "gray"},
+      {"text": "Unlocked by default", "color": "gray", "italic": true},
+      {"text": ")\n", "color": "gray"},
+      {"text": "  Farming", "color": "green", "bold": true},
+      {"text": " — Crop harvesting & food bonuses.\n"},
+      {"text": "    (", "color": "gray"},
+      {"text": "Unlocked by default", "color": "gray", "italic": true},
+      {"text": ")\n", "color": "gray"},
+      {"text": "  Armorer", "color": "gold", "bold": true},
+      {"text": " — Crafting & smithing improvements.\n"},
+      {"text": "    (", "color": "gray"},
+      {"text": "Unlocked by default", "color": "gray", "italic": true},
+      {"text": ")\n\n", "color": "gray"},
+      {"text": "How to Progress\n", "bold": true, "color": "aqua"},
+      {"text": "  Perform actions related to each tree to earn\n  XP and unlock nodes in the skill graph.\n\n"},
+      {"text": "Open your skills screen with the\nkeybind set in Controls.", "color": "yellow", "italic": true}
+    ]
+  },
+  "can_close_with_escape": true,
+  "action": {
+    "label": "Close"
+  }
+}
